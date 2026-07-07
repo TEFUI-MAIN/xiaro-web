@@ -121,9 +121,9 @@ export function ProductTour() {
                 <p className="mt-4 max-w-xl text-base leading-7 text-muted">{block.copy}</p>
                 {block.key === "location" ? (
                   <blockquote className="mt-6 border-l-2 border-green pl-4 text-sm italic leading-6 text-muted">
-                    "Locations shown here are one-time check-ins shared by drivers
-                    for operational issues. Xiaro does not continuously track
-                    drivers." — the notice in the product itself
+                    &ldquo;Locations shown here are one-time check-ins shared by
+                    drivers for operational issues. Xiaro does not continuously
+                    track drivers.&rdquo; — the notice in the product itself
                   </blockquote>
                 ) : null}
               </MotionCard>

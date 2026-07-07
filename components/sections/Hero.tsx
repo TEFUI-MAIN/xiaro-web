@@ -41,7 +41,7 @@ export function Hero() {
           </div>
         </MotionCard>
         <MotionCard delay={0.08} className="justify-self-center lg:justify-self-end">
-          <div className="rotate-1 rounded-2xl border border-hairline bg-card p-5 sm:p-8">
+          <div className="rotate-1 rounded-2xl border border-hairline bg-card p-4 sm:p-8">
             <PhoneFrame>
               <ChatMock />
             </PhoneFrame>

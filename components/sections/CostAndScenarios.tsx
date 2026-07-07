@@ -183,7 +183,7 @@ export function CostAndScenarios() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold leading-6 text-ink">{scenario.title}</h4>
+                    <h3 className="font-semibold leading-6 text-ink">{scenario.title}</h3>
                     <p className="mt-2.5 text-sm leading-6 text-muted">{scenario.copy}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {scenario.tags.map((tag) => (
@@ -261,6 +261,7 @@ function CostSlider({
         max={max}
         step={step}
         value={value}
+        aria-label={label}
         onChange={(event) => onChange(Number(event.target.value))}
         className="h-2 w-full cursor-pointer accent-green"
       />

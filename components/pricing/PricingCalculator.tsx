@@ -160,7 +160,7 @@ export function PricingCalculator() {
             type="button"
             onClick={startCheckout}
             disabled={pending}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-green-deep disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-green-deep px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#126A3C] disabled:cursor-not-allowed disabled:opacity-70"
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Get started"}
           </button>

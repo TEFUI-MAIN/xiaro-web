@@ -68,7 +68,7 @@ export default function PricingPage() {
                 </ul>
               </div>
               <div className="rounded-2xl border border-green/30 bg-green/5 p-6 sm:p-8">
-                <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-green-deep">
+                <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-[#136A3E]">
                   Why there are no message fees
                 </h3>
                 <p className="mt-4 text-sm leading-7 text-muted">
@@ -77,7 +77,7 @@ export default function PricingPage() {
                     We never mark up your messages.
                   </span>{" "}
                   Your carrier and WhatsApp Business accounts stay yours — Xiaro
-                  is the routing layer on top, so you're never locked in.
+                  is the routing layer on top, so you&apos;re never locked in.
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-hairline bg-card p-6 sm:p-8">

@@ -1,10 +1,10 @@
 import clsx from "clsx";
 
 const tones = {
-  green: "border-green/40 text-green-deep bg-green/5",
-  amber: "border-amber/50 text-[#9A6A1F] bg-amber/10",
+  green: "border-green/40 text-[#136A3E] bg-green/5",
+  amber: "border-amber/50 text-[#7E5512] bg-amber/10",
   ink: "border-ink/25 text-ink/70 bg-transparent",
-  signal: "border-signal/40 text-signal bg-signal/5"
+  signal: "border-signal/40 text-[#B03A3A] bg-signal/5"
 } as const;
 
 export type ChipTone = keyof typeof tones;
