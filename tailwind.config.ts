@@ -8,13 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#030711",
-        navy: "#07111f",
-        cyan: "#18d9ff",
-        blue: "#1677ff"
+        paper: "#FAFAF7",
+        card: "#FFFFFF",
+        ink: "#14181F",
+        muted: "#5B6472",
+        hairline: "#E3E1DA",
+        green: { DEFAULT: "#1FA45B", deep: "#17834A" },
+        amber: "#E8A13A",
+        signal: "#D64545",
+        panel: "#10141B"
       },
-      boxShadow: {
-        glow: "0 0 80px rgba(24, 217, 255, 0.2)"
+      fontFamily: {
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"]
       }
     }
   },
