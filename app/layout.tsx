@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, IBM_Plex_Mono, Inter } from "next/font/google";
+import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -46,7 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <JsonLd />
+      </body>
     </html>
   );
 }
