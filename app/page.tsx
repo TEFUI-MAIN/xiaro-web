@@ -16,7 +16,8 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import { MotionCard, MotionSection } from "@/components/Motion";
 import { RoiSection } from "@/components/RoiSection";
 import { XiaroLogo } from "@/components/XiaroLogo";
-import type { CheckoutPlan } from "@/lib/checkout";
+
+type CheckoutPlan = string;
 
 const draftSections = [
   {
