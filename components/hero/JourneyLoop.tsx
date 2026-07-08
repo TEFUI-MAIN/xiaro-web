@@ -199,7 +199,7 @@ export function JourneyLoop() {
         </div>
         <div className="font-mono text-[10px] text-muted" aria-live="off">
           {RAIL.map((stamp, index) => (
-            <span key={stamp} className={index === scene ? "text-ink" : "text-muted/60"}>
+            <span key={stamp} className={index === scene ? "text-ink" : "text-muted"}>
               {stamp}
               {index < RAIL.length - 1 ? " · " : ""}
             </span>

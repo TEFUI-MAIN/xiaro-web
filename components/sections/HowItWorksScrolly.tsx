@@ -89,20 +89,27 @@ export function HowItWorksScrolly() {
           />
           <div ref={ref} className="relative mt-8 grid grid-cols-2 gap-16">
             <div>
-              {HOW_STEPS.map((step, index) => (
-                <motion.div
-                  key={step.title}
-                  animate={{ opacity: active === index ? 1 : 0.35 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex min-h-[80vh] flex-col justify-center"
-                >
-                  <span className="font-mono text-xs text-muted">0{index + 1}</span>
-                  <h3 className="mt-3 font-display text-3xl tracking-[-0.02em] text-ink">
-                    {step.title}
-                  </h3>
-                  <p className="mt-4 max-w-md text-base leading-7 text-muted">{step.copy}</p>
-                </motion.div>
-              ))}
+              {HOW_STEPS.map((step, index) => {
+                const isActive = active === index;
+                return (
+                  <div
+                    key={step.title}
+                    className={`flex min-h-[80vh] flex-col justify-center border-l-2 pl-6 transition-colors duration-300 ${
+                      isActive ? "border-green" : "border-hairline"
+                    }`}
+                  >
+                    <span className="font-mono text-xs text-muted">0{index + 1}</span>
+                    <h3
+                      className={`mt-3 font-display text-3xl tracking-[-0.02em] transition-colors duration-300 ${
+                        isActive ? "text-ink" : "text-muted"
+                      }`}
+                    >
+                      {step.title}
+                    </h3>
+                    <p className="mt-4 max-w-md text-base leading-7 text-muted">{step.copy}</p>
+                  </div>
+                );
+              })}
             </div>
             <div>
               <div className="sticky top-24 flex h-[70vh] items-center">
