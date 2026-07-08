@@ -4,6 +4,7 @@ const tones = {
   night: "bg-night text-cream",
   navy: "bg-navy text-cream",
   azure: "bg-[linear-gradient(140deg,#1677FF,#0E56D6_70%)] text-white",
+  charcoal: "bg-[linear-gradient(140deg,#454C58,#2E333C_75%)] text-white",
   gray: "bg-cream text-ink",
   white: "bg-white text-ink shadow-[0_10px_36px_rgba(7,17,31,0.07)]"
 } as const;

@@ -3,39 +3,71 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { ChevronLeft, MapPin } from "lucide-react";
 import { Chip } from "@/components/ui/Chip";
+import { PhoneShell } from "@/components/zd/PhoneShell";
 import { Display } from "@/components/zd/Display";
 import { Eyebrow } from "@/components/zd/Eyebrow";
 import { GlowFrame } from "@/components/zd/GlowFrame";
 import { Inset, SectionCard } from "@/components/zd/SectionCard";
 
-/** Coded illustration of a driver-approved one-off location share. */
+/** Coded illustration of a driver-approved one-off location share, in a proper device shell. */
 function LocationMock() {
   return (
-    <div className="mx-auto w-[280px] rounded-[1.8rem] bg-white p-3">
-      <div className="flex items-center gap-3 rounded-t-[1.2rem] bg-[#075E54] px-4 py-3 text-white">
-        <div className="grid h-8 w-8 place-items-center rounded-full bg-white/20 text-xs font-semibold">
+    <PhoneShell time="02:53">
+      <div className="flex items-center gap-2.5 bg-[#075E54] px-4 pb-3 pt-2 text-white">
+        <ChevronLeft className="h-4 w-4 text-white/80" aria-hidden />
+        <div className="grid h-8 w-8 place-items-center rounded-full bg-white/20 text-[11px] font-semibold">
           AF
         </div>
-        <div className="text-sm font-semibold">Acme Freight</div>
+        <div>
+          <div className="text-[13.5px] font-semibold leading-4">Acme Freight</div>
+          <div className="text-[10.5px] text-white/70">online</div>
+        </div>
       </div>
-      <div className="flex flex-col gap-3 bg-[#EFEAE2] p-3 pb-5">
-        <div className="max-w-[85%] self-end rounded-lg rounded-tr-none bg-[#D9FDD3] p-2.5 text-[13px]">
+
+      <div className="flex flex-col gap-3 bg-[#EFEAE2] p-3 pb-4">
+        <div className="max-w-[88%] self-end rounded-lg rounded-tr-none bg-[#D9FDD3] p-2.5 text-[13px] shadow-sm">
           <p className="text-[11px] font-semibold text-[#17834A]">Sarah · on shift</p>
-          <p className="mt-0.5 leading-5 text-ink">Can you share your location so the tow finds you?</p>
+          <p className="mt-0.5 leading-5 text-ink">
+            Can you share your location so the tow finds you?
+          </p>
+          <p className="mt-1 text-right font-mono text-[9.5px] text-ink/45">02:52</p>
         </div>
-        <div className="max-w-[85%] self-start overflow-hidden rounded-lg rounded-tl-none bg-white">
-          <div className="grid h-20 place-items-center bg-[#DDE7DD]">
-            <MapPin className="h-6 w-6 text-[#17834A]" />
+
+        <div className="max-w-[88%] self-start overflow-hidden rounded-lg rounded-tl-none bg-white shadow-sm">
+          <div className="relative h-28">
+            <svg viewBox="0 0 240 112" className="h-full w-full" aria-hidden>
+              <rect width="240" height="112" fill="#E4EBE2" />
+              <path d="M-10 78 C 60 70, 90 90, 250 64" stroke="#FFFFFF" strokeWidth="10" fill="none" />
+              <path d="M52 -10 C 60 40, 44 80, 60 122" stroke="#FFFFFF" strokeWidth="7" fill="none" />
+              <path d="M-10 30 L 250 18" stroke="#FFFFFF" strokeWidth="5" fill="none" />
+              <path d="M170 -10 C 160 40, 190 70, 178 122" stroke="#FFFFFF" strokeWidth="6" fill="none" />
+              <path d="M-10 78 C 60 70, 90 90, 250 64" stroke="#CBD8C8" strokeWidth="1" fill="none" strokeDasharray="4 6" />
+              <path
+                d="M30 96 C 80 88, 120 74, 148 52"
+                stroke="#1677FF"
+                strokeWidth="2.5"
+                strokeDasharray="5 5"
+                fill="none"
+              />
+              <circle cx="30" cy="96" r="4" fill="#1677FF" opacity="0.85" />
+            </svg>
+            <div className="absolute left-[58%] top-[34%] -translate-x-1/2 -translate-y-full">
+              <MapPin className="h-7 w-7 fill-[#17834A] text-white drop-shadow" />
+            </div>
           </div>
-          <p className="p-2.5 text-[13px] leading-5 text-ink">Current location — shared once</p>
+          <p className="px-3 py-2.5 text-[13px] leading-5 text-ink">
+            Current location — shared once
+            <span className="mt-0.5 block font-mono text-[9.5px] text-ink/45">02:53 ✓✓</span>
+          </p>
         </div>
-        <div className="self-center">
+
+        <div className="self-center pt-1">
           <Chip tone="green">One-time · driver approved</Chip>
         </div>
       </div>
-    </div>
+    </PhoneShell>
   );
 }
 
@@ -89,7 +121,7 @@ export function ForestTour() {
   return (
     <section id="product" className="py-10">
       <Inset>
-        <SectionCard tone="azure" className="overflow-hidden">
+        <SectionCard tone="charcoal" className="overflow-hidden">
           <div ref={ref} className="p-6 sm:p-10 lg:p-16">
             <Eyebrow tone="volt">Inside the product</Eyebrow>
             <Display level={2} className="mt-5 max-w-2xl text-white">
