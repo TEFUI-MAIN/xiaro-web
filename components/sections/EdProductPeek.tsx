@@ -20,7 +20,7 @@ export function EdProductPeek() {
             className="w-full"
           />
         </div>
-        <p className="mt-4 text-[13px] text-gray">
+        <p className="mt-4 text-[14px] text-gray">
           Live shift coverage, unanswered messages, escalations, and a verified audit chain — one screen.
         </p>
       </Ed>

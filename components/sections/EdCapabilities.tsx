@@ -133,7 +133,7 @@ export function EdCapabilities() {
               {art ? (
                 <Ed>
                   <div className={`relative w-full overflow-hidden ${art.h}`}>
-                    <Image src={art.src} alt={art.alt} fill sizes="100vw" className="object-cover" />
+                    <Image src={art.src} alt={art.alt} fill sizes="(min-width: 1270px) 1270px, 100vw" className="object-cover" />
                   </div>
                 </Ed>
               ) : null}

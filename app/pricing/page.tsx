@@ -106,12 +106,12 @@ export default function PricingPage() {
             <TwoTone lead="Questions fleets actually ask." />
             <div className="mt-10 divide-y divide-hairline border-y border-hairline">
               {faq.map((item) => (
-                <details key={item.q} className="group py-5">
-                  <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-[16px] text-ink [&::-webkit-details-marker]:hidden">
+                <details key={item.q} className="group">
+                  <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 py-5 text-left text-[16px] text-ink [&::-webkit-details-marker]:hidden">
                     {item.q}
                     <span className="text-gray transition group-open:rotate-45">+</span>
                   </summary>
-                  <p className="mt-3 text-[15px] leading-7 text-gray">{item.a}</p>
+                  <p className="pb-5 text-[15px] leading-7 text-gray">{item.a}</p>
                 </details>
               ))}
             </div>
