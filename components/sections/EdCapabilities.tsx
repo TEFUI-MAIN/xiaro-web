@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CalendarCheck, FileCheck, MapPin, TimerReset } from "lucide-react";
 import { MotionCard } from "@/components/Motion";
+import { EdLadderLoop } from "@/components/ed/EdLadderLoop";
 import { Ed, Trio } from "@/components/ed/Ed";
 import { PillLink } from "@/components/ed/PillLink";
 import { TwoTone } from "@/components/ed/TwoTone";
@@ -30,6 +31,7 @@ const blocks = [
   {
     icon: TimerReset,
     label: "Escalator",
+    widget: "ladder",
     lead: "I don't let silence win.",
     rest: "No reply in five minutes and I move up your ladder — escalation contact, duty manager, admin alert — until a human owns it.",
     trios: [
@@ -121,6 +123,7 @@ export function EdCapabilities() {
                   </div>
                   <p className="mt-5 text-[14px] text-gray">{block.label}</p>
                   <TwoTone className="mt-3" lead={block.lead} rest={block.rest} />
+                  {"widget" in block && block.widget === "ladder" ? <EdLadderLoop /> : null}
                   <Trio items={block.trios} />
                   <div className="mt-9">
                     <PillLink href={block.cta.href}>{block.cta.label}</PillLink>

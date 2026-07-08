@@ -55,6 +55,18 @@ export function Playground() {
 
   useEffect(() => () => timers.current.forEach((id) => window.clearTimeout(id)), []);
 
+  useEffect(() => {
+    const onScenario = (event: Event) => {
+      const detail = (event as CustomEvent<{ idx: number; answers: boolean }>).detail;
+      if (!detail) return;
+      setScenarioIdx(detail.idx);
+      setAnswers(detail.answers);
+      setCustom("");
+    };
+    window.addEventListener("xiaro:scenario", onScenario);
+    return () => window.removeEventListener("xiaro:scenario", onScenario);
+  }, []);
+
   function run() {
     timers.current.forEach((id) => window.clearTimeout(id));
     timers.current = [];
