@@ -1,8 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { BarChart3, Check, FileText, PhoneOff, Timer, X } from "lucide-react";
 import { MotionCard, MotionSection } from "@/components/Motion";
+import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { formatAud, monthlyPriceAud, ONBOARDING_AUD } from "@/lib/pricing";
@@ -100,11 +102,22 @@ export function CostAndScenarios() {
     const annualLoss = Math.round(misrouteLoss + slaLoss + breakdownLoss + adminLoss);
     const xiaroCost = monthlyPriceAud(drivers) * 12;
     return {
+      misrouteLoss,
+      slaLoss,
+      breakdownLoss,
+      adminLoss,
       annualLoss,
       xiaroCost,
       netSaving: Math.max(0, annualLoss - xiaroCost)
     };
   }, [drivers, shifts, misroutes]);
+
+  const lossParts = [
+    { label: "Mis-routed calls", value: roi.misrouteLoss, cls: "bg-signal" },
+    { label: "SLA breaches", value: roi.slaLoss, cls: "bg-amber" },
+    { label: "Breakdown response", value: roi.breakdownLoss, cls: "bg-[#8A94A3]" },
+    { label: "Admin overhead", value: roi.adminLoss, cls: "bg-hairline" }
+  ];
 
   const fleet100Cost = monthlyPriceAud(100) * 12;
 
@@ -143,15 +156,46 @@ export function CostAndScenarios() {
             <CostSlider label="Mis-routes per day" value={misroutes} min={1} max={20} step={1} suffix="/day" onChange={setMisroutes} />
           </div>
           <div className="my-7 h-px bg-hairline" />
+          <div>
+            <div className="mb-2 flex items-baseline justify-between">
+              <span className="text-sm font-medium text-ink">Where the loss comes from</span>
+              <span className="font-mono text-sm text-signal">{formatCurrency(roi.annualLoss)}/yr</span>
+            </div>
+            <div className="flex h-3 w-full overflow-hidden rounded-full bg-card">
+              {lossParts.map((part) => (
+                <motion.div
+                  key={part.label}
+                  className={`h-full ${part.cls}`}
+                  animate={{ width: `${(part.value / roi.annualLoss) * 100}%` }}
+                  transition={{ type: "spring", stiffness: 170, damping: 26 }}
+                />
+              ))}
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-4">
+              {lossParts.map((part) => (
+                <div key={part.label} className="flex items-center gap-2 text-xs text-muted">
+                  <span className={`h-2 w-2 shrink-0 rounded-full ${part.cls}`} aria-hidden />
+                  <span className="flex-1">{part.label}</span>
+                  <span className="font-mono">{formatCurrency(part.value)}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="my-7 h-px bg-hairline" />
           <div className="grid gap-4 md:grid-cols-3">
             <ResultCard value={formatCurrency(roi.annualLoss)} label="Estimated annual loss" tone="text-signal" />
             <ResultCard value={formatAud(roi.xiaroCost)} label="Xiaro annual cost (billed monthly)" tone="text-ink" />
             <ResultCard value={formatCurrency(roi.netSaving)} label="Net annual saving" tone="text-green-deep" />
           </div>
-          <p className="mt-4 font-mono text-[11px] text-muted">
-            {formatAud(monthlyPriceAud(drivers))}/mo at {drivers} drivers — AU$79 base
-            {drivers > 25 ? ` + ${drivers - 25} × AU$3` : " (25 drivers included)"}
-          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+            <p className="font-mono text-[11px] text-muted">
+              {formatAud(monthlyPriceAud(drivers))}/mo at {drivers} drivers — AU$79 base
+              {drivers > 25 ? ` + ${drivers - 25} × AU$3` : " (25 drivers included)"}
+            </p>
+            <Button href={`/pricing?drivers=${drivers}`}>
+              See your price for {drivers} drivers →
+            </Button>
+          </div>
         </div>
 
         <div className="mt-16">
