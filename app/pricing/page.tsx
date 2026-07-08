@@ -6,7 +6,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TrustStrip } from "@/components/ui/TrustStrip";
+import { TrustRow } from "@/components/sections/TrustRow";
 import { faq } from "@/lib/faq";
 import { BOOKING_URL } from "@/lib/links";
 
@@ -101,7 +101,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <TrustStrip />
+      <TrustRow />
 
       <section className="px-5 py-16 lg:px-12 lg:py-20">
         <div className="mx-auto max-w-3xl">

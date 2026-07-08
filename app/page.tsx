@@ -1,15 +1,12 @@
 import { Announcement } from "@/components/sections/Announcement";
-import { CostAndScenarios } from "@/components/sections/CostAndScenarios";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { AudienceCards } from "@/components/sections/AudienceCards";
 import { Footer } from "@/components/sections/Footer";
+import { ForestTour } from "@/components/sections/ForestTour";
 import { Header } from "@/components/sections/Header";
 import { HeroCard } from "@/components/sections/Hero";
-import { Industries } from "@/components/sections/Industries";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { StorySpine } from "@/components/sections/StorySpine";
 import { Playground } from "@/components/sections/Playground";
-import { PricingSummary } from "@/components/sections/PricingSummary";
-import { ProductTour } from "@/components/sections/ProductTour";
 import { Statement } from "@/components/sections/Statement";
 import { TrustRow } from "@/components/sections/TrustRow";
 
@@ -23,13 +20,10 @@ export default function Home() {
       <Statement />
       <StorySpine />
       <StatsBand />
-      {/* Sections below are progressively replaced by the zd rebuild (Tasks 5–6). */}
+      <ForestTour />
+      <AudienceCards />
+      {/* Playground restyled in Task 6; teaser + final band land there too. */}
       <Playground />
-      <ProductTour />
-      <CostAndScenarios />
-      <Industries />
-      <PricingSummary />
-      <FinalCta />
       <Footer />
     </main>
   );
