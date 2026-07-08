@@ -6,8 +6,7 @@ import { useReducedMotion } from "framer-motion";
 import { Play, RotateCcw } from "lucide-react";
 import { MotionSection } from "@/components/Motion";
 import { Chip } from "@/components/ui/Chip";
-import { Display } from "@/components/zd/Display";
-import { Eyebrow } from "@/components/zd/Eyebrow";
+import { Chapter, ChapterTitle } from "@/components/zd/Chapter";
 import { Inset, SectionCard } from "@/components/zd/SectionCard";
 import { Pill } from "@/components/zd/Pill";
 import { BOOKING_URL } from "@/lib/links";
@@ -88,16 +87,18 @@ export function Playground() {
   }
 
   return (
-    <MotionSection id="try-it" className="py-16 lg:py-24">
+    <Chapter id="try-it" tone="white">
+      <MotionSection>
       <Inset>
-        <div className="mx-auto mb-14 max-w-3xl text-center">
-          <Eyebrow tone="green" className="mb-4">
-            Try it
-          </Eyebrow>
-          <Display level={2}>Watch a message find its owner.</Display>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-ink/60">
-            Pick a message and a time. This is a simulation — the real product does
-            this with your roster, on your number.
+        <div className="mb-14 max-w-3xl">
+          <ChapterTitle>
+            Don&apos;t take our word for it.{" "}
+            <span className="text-brand-gradient-deep">Route one yourself.</span>
+          </ChapterTitle>
+          <p className="mt-7 max-w-xl text-lg leading-8 text-ink/60">
+            Pick a message and a time, then watch the decision happen. It&apos;s a
+            simulation — the real product does this with your roster, on your
+            number.
           </p>
         </div>
 
@@ -243,6 +244,7 @@ export function Playground() {
           </Pill>
         </div>
       </Inset>
-    </MotionSection>
+      </MotionSection>
+    </Chapter>
   );
 }

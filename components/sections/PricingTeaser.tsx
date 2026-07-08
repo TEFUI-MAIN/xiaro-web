@@ -1,51 +1,62 @@
 import { Check, ShieldCheck } from "lucide-react";
-import { MotionSection } from "@/components/Motion";
-import { Display } from "@/components/zd/Display";
-import { Inset, SectionCard } from "@/components/zd/SectionCard";
+import { MotionCard } from "@/components/Motion";
+import { Chapter, ChapterTitle } from "@/components/zd/Chapter";
+import { Inset } from "@/components/zd/SectionCard";
 import { Pill } from "@/components/zd/Pill";
 import { BOOKING_URL } from "@/lib/links";
 
 const bullets = [
   "First 25 drivers included",
-  "AU$3/driver after",
-  "Every feature, every plan"
+  "AU$3/driver after that",
+  "Every feature on every plan",
+  "You pay carriers directly — we never mark up messages"
 ];
 
 export function PricingTeaser() {
   return (
-    <MotionSection className="px-0 py-16 lg:py-24">
+    <Chapter tone="tint">
       <Inset>
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <Display level={2}>Pricing built for fleets, not seats.</Display>
+        <div className="grid items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
+          <div>
+            <ChapterTitle>
+              The <span className="text-brand-gradient-deep">no-brainer</span> part.
+            </ChapterTitle>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-ink/60">
+              One roadside hour costs more than a month of Xiaro. If it isn&apos;t
+              routing your messages within 30 days, you get every dollar back.
+            </p>
+          </div>
+          <MotionCard>
+            <div className="rounded-2xl bg-white p-8 shadow-[0_18px_50px_rgba(7,17,31,0.10)] sm:p-10">
+              <div className="flex items-end justify-between gap-4">
+                <div className="text-[56px] font-semibold leading-none">
+                  AU$79<span className="text-2xl font-medium text-ink/50">/mo</span>
+                </div>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2F5F8] px-3 py-1.5 text-[12px] font-semibold text-green-deep">
+                  <ShieldCheck className="h-4 w-4" />
+                  30-day money-back
+                </span>
+              </div>
+              <ul className="mt-7 grid gap-3 border-t border-hairline pt-6">
+                {bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/70">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Pill href="/pricing" className="flex-1">
+                  See pricing
+                </Pill>
+                <Pill href={BOOKING_URL} variant="outline" className="flex-1">
+                  Talk to us
+                </Pill>
+              </div>
+            </div>
+          </MotionCard>
         </div>
-        <SectionCard tone="gray" className="mx-auto max-w-3xl p-8 text-center sm:p-12">
-          <div className="text-[56px] font-medium leading-none">
-            AU$79<span className="text-2xl text-ink/50">/mo</span>
-          </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2">
-            {bullets.map((bullet) => (
-              <span key={bullet} className="flex items-center gap-2 text-[15px] text-ink/70">
-                <Check className="h-4 w-4 text-green-deep" />
-                {bullet}
-              </span>
-            ))}
-          </div>
-          <p className="mx-auto mt-6 max-w-md text-sm leading-6 text-ink/60">
-            You bring your own carrier and WhatsApp Business accounts and pay them
-            directly. <span className="font-semibold text-ink">We never mark up your messages.</span>
-          </p>
-          <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-green-deep">
-            <ShieldCheck className="h-4 w-4" />
-            30-day money-back guarantee
-          </div>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Pill href="/pricing">See pricing</Pill>
-            <Pill href={BOOKING_URL} variant="outline">
-              Talk to us
-            </Pill>
-          </div>
-        </SectionCard>
       </Inset>
-    </MotionSection>
+    </Chapter>
   );
 }

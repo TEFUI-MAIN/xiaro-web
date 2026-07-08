@@ -7,8 +7,7 @@ import { MotionCard } from "@/components/Motion";
 import { EscalationLadderCard } from "@/components/zd/EscalationLadderCard";
 import { RosterMini } from "@/components/zd/RosterMini";
 import { Chip } from "@/components/ui/Chip";
-import { Display } from "@/components/zd/Display";
-import { Eyebrow } from "@/components/zd/Eyebrow";
+import { Chapter, ChapterTitle } from "@/components/zd/Chapter";
 import { Inset, SectionCard } from "@/components/zd/SectionCard";
 
 function ChatVignette() {
@@ -69,13 +68,18 @@ export function StorySpine() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="how-it-works" className="pb-24 lg:pb-32">
+    <Chapter id="how-it-works" tone="tint">
       <Inset>
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <Eyebrow tone="green" className="mb-4">
-            How it works
-          </Eyebrow>
-          <Display level={2}>One routing decision between every message and every shift.</Display>
+        <div className="mb-16 max-w-3xl">
+          <ChapterTitle>
+            One number.
+            <br />
+            <span className="text-brand-gradient-deep">Zero guessing.</span>
+          </ChapterTitle>
+          <p className="mt-7 max-w-xl text-lg leading-8 text-ink/60">
+            Here&apos;s the same 2:47 am — with Xiaro sitting between the message and
+            the chaos.
+          </p>
         </div>
 
         <div ref={ref} className="relative">
@@ -100,7 +104,7 @@ export function StorySpine() {
                   </div>
                 ) : null}
                 <MotionCard>
-                  <SectionCard tone="gray" className="relative overflow-visible">
+                  <SectionCard tone="white" className="relative overflow-visible">
                     {card.glow ? (
                       <div
                         aria-hidden
@@ -126,6 +130,6 @@ export function StorySpine() {
           </div>
         </div>
       </Inset>
-    </section>
+    </Chapter>
   );
 }

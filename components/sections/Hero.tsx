@@ -27,8 +27,9 @@ export function HeroCard() {
               shift.
             </Display>
             <p className="mt-6 max-w-xl text-lg leading-7 text-cream/75">
-              One company number on WhatsApp and SMS. Routed by who&apos;s on shift,
-              escalated when nobody answers, logged forever.
+              One company number on WhatsApp and SMS — routed by who&apos;s on shift,
+              escalated when nobody answers, logged forever. No app to roll out,
+              and no more 2:47 am calls to your own mobile.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Pill href="/pricing">Get started</Pill>
