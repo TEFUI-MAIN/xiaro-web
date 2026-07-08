@@ -2,35 +2,48 @@ import { MessageCircle, CalendarCheck, Eye } from "lucide-react";
 import { MotionCard, MotionSection } from "@/components/Motion";
 import { Chip } from "@/components/ui/Chip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { HOW_STEPS, LADDER } from "@/components/sections/how-it-works-content";
 
-const steps = [
-  {
-    icon: MessageCircle,
-    title: "A driver messages the company number",
-    copy: "WhatsApp or SMS — same number, same thread."
-  },
-  {
-    icon: CalendarCheck,
-    title: "Xiaro checks the roster",
-    copy: "Site, shift window, time of day. The message lands with the supervisor actually on duty."
-  },
-  {
-    icon: Eye,
-    title: "Delivered — and watched",
-    copy: "Read receipts, reply tracking, and a timer. Everything logged."
-  }
-];
+const stepIcons = [MessageCircle, CalendarCheck, Eye];
 
-const ladder = [
-  { time: "0:00", who: "Supervisor (on shift)", status: "Notified", tone: "green" as const },
-  { time: "+5:00", who: "Escalation contact", status: "Notified", tone: "amber" as const },
-  { time: "+15:00", who: "Duty manager", status: "Notified", tone: "amber" as const },
-  { time: "+25:00", who: "Admin alert", status: "Flagged", tone: "signal" as const }
-];
-
-export function HowItWorks() {
+export function EscalationLadderCard() {
   return (
-    <MotionSection id="how-it-works" className="border-b border-hairline px-5 py-20 lg:px-12 lg:py-24">
+    <div className="rounded-lg border border-hairline bg-card p-6 sm:p-8">
+      <div className="relative">
+        <div className="absolute bottom-3 left-[4.5rem] top-3 w-px bg-hairline" aria-hidden />
+        <div className="grid gap-5">
+          {LADDER.map((rung) => (
+            <div
+              key={rung.who}
+              className="grid grid-cols-[3.5rem_1rem_1fr_auto] items-center gap-3"
+            >
+              <span className="text-right font-mono text-sm text-muted">{rung.time}</span>
+              <span
+                className={`relative z-10 h-2.5 w-2.5 justify-self-center rounded-full ${
+                  rung.tone === "green"
+                    ? "bg-green"
+                    : rung.tone === "amber"
+                      ? "bg-amber"
+                      : "bg-signal"
+                }`}
+                aria-hidden
+              />
+              <span className="text-sm font-medium text-ink">{rung.who}</span>
+              <Chip tone={rung.tone}>{rung.status}</Chip>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function HowItWorks({ withId = true }: { withId?: boolean }) {
+  return (
+    <MotionSection
+      id={withId ? "how-it-works" : undefined}
+      className="border-b border-hairline px-5 py-20 lg:px-12 lg:py-24"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           number="03"
@@ -40,8 +53,8 @@ export function HowItWorks() {
         />
 
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
+          {HOW_STEPS.slice(0, 3).map((step, index) => {
+            const Icon = stepIcons[index];
             return (
               <MotionCard
                 key={step.title}
@@ -64,36 +77,12 @@ export function HowItWorks() {
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <h3 className="font-display text-2xl tracking-[-0.02em] text-ink sm:text-3xl">
-              Nobody answers? It climbs the ladder.
+              {HOW_STEPS[3].title}
             </h3>
-            <p className="mt-4 max-w-md text-base leading-7 text-muted">
-              Unanswered messages climb the escalation ladder until a human owns
-              them. Timings are yours to set.
-            </p>
+            <p className="mt-4 max-w-md text-base leading-7 text-muted">{HOW_STEPS[3].copy}</p>
           </div>
-          <MotionCard delay={0.08} className="rounded-lg border border-hairline bg-card p-6 sm:p-8">
-            <div className="relative">
-              <div className="absolute bottom-3 left-[4.5rem] top-3 w-px bg-hairline" aria-hidden />
-              <div className="grid gap-5">
-                {ladder.map((rung) => (
-                  <div key={rung.who} className="grid grid-cols-[3.5rem_1rem_1fr_auto] items-center gap-3">
-                    <span className="text-right font-mono text-sm text-muted">{rung.time}</span>
-                    <span
-                      className={`relative z-10 h-2.5 w-2.5 justify-self-center rounded-full ${
-                        rung.tone === "green"
-                          ? "bg-green"
-                          : rung.tone === "amber"
-                            ? "bg-amber"
-                            : "bg-signal"
-                      }`}
-                      aria-hidden
-                    />
-                    <span className="text-sm font-medium text-ink">{rung.who}</span>
-                    <Chip tone={rung.tone}>{rung.status}</Chip>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <MotionCard delay={0.08}>
+            <EscalationLadderCard />
           </MotionCard>
         </div>
       </div>
