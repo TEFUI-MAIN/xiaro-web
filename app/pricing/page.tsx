@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Check } from "lucide-react";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
+import { Announcement } from "@/components/sections/Announcement";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
-import { Button } from "@/components/ui/Button";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TrustRow } from "@/components/sections/TrustRow";
+import { Display } from "@/components/zd/Display";
+import { Eyebrow } from "@/components/zd/Eyebrow";
+import { Inset, SectionCard } from "@/components/zd/SectionCard";
+import { Pill } from "@/components/zd/Pill";
 import { faq } from "@/lib/faq";
 import { BOOKING_URL } from "@/lib/links";
 
@@ -38,87 +41,100 @@ export default function PricingPage() {
   };
 
   return (
-    <main className="min-h-screen bg-paper text-ink">
+    <main className="min-h-screen bg-white text-ink">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+      <Announcement />
       <Header />
 
-      <section className="border-b border-hairline px-5 py-16 lg:px-12 lg:py-20">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Pricing"
-            title="One plan. Your own accounts. No markups."
-            copy="AU$79/month covers your first 25 drivers with every feature included. AU$3 per driver after that. That's the whole model."
-          />
-          <div className="mt-12 grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <Suspense
-              fallback={<div className="h-[560px] rounded-2xl border border-hairline bg-card" />}
-            >
-              <PricingCalculator />
-            </Suspense>
-            <div className="grid gap-6">
-              <div className="rounded-2xl border border-hairline bg-card p-6 sm:p-8">
-                <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-muted">
-                  Everything included
-                </h3>
-                <ul className="mt-5 grid gap-3">
-                  {included.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm leading-6 text-muted">
-                      <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-green/30 bg-green/5 p-6 sm:p-8">
-                <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-[#136A3E]">
-                  Why there are no message fees
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-muted">
-                  You own your accounts. You pay carriers directly.{" "}
-                  <span className="font-semibold text-ink">
-                    We never mark up your messages.
-                  </span>{" "}
-                  Your carrier and WhatsApp Business accounts stay yours — Xiaro
-                  is the routing layer on top, so you&apos;re never locked in.
+      <Inset className="pb-20 pt-16 lg:pt-24">
+        <div className="max-w-3xl">
+          <Eyebrow tone="green">Pricing</Eyebrow>
+          <Display level={1} className="mt-5">
+            One plan. Your own accounts. No&nbsp;markups.
+          </Display>
+          <p className="mt-6 max-w-xl text-lg leading-7 text-ink/60">
+            AU$79/month covers your first 25 drivers with every feature included.
+            AU$3 per driver after that. That&apos;s the whole model.
+          </p>
+        </div>
+
+        <div className="mt-14 grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <Suspense
+            fallback={<div className="h-[560px] rounded-3xl bg-cream" />}
+          >
+            <PricingCalculator />
+          </Suspense>
+
+          <div className="grid gap-6">
+            <SectionCard tone="gray" className="p-7 sm:p-9">
+              <h3 className="text-sm font-bold uppercase tracking-[0.75px] text-ink/50">
+                Everything included
+              </h3>
+              <ul className="mt-5 grid gap-3">
+                {included.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/70">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </SectionCard>
+
+            <SectionCard tone="forest" className="p-7 sm:p-9">
+              <h3 className="text-sm font-bold uppercase tracking-[0.75px] text-volt">
+                Why there are no message fees
+              </h3>
+              <p className="mt-4 text-[15px] leading-7 text-cream/80">
+                You own your accounts. You pay carriers directly.{" "}
+                <span className="font-semibold text-cream">We never mark up your messages.</span>{" "}
+                Your carrier and WhatsApp Business accounts stay yours — Xiaro is
+                the routing layer on top, so you&apos;re never locked in.
+              </p>
+            </SectionCard>
+
+            <SectionCard tone="gray" className="flex flex-wrap items-center justify-between gap-4 p-7 sm:p-9">
+              <div>
+                <h3 className="text-lg font-semibold">Enterprise</h3>
+                <p className="mt-1 text-sm text-ink/60">
+                  Multiple depots, custom integrations, SLAs.
                 </p>
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-hairline bg-card p-6 sm:p-8">
-                <div>
-                  <h3 className="font-semibold text-ink">Enterprise</h3>
-                  <p className="mt-1 text-sm text-muted">
-                    Multiple depots, custom integrations, SLAs.
-                  </p>
-                </div>
-                <Button href={BOOKING_URL} variant="outline">
-                  Talk to us
-                </Button>
-              </div>
-            </div>
+              <Pill href={BOOKING_URL} variant="outline">
+                Talk to us
+              </Pill>
+            </SectionCard>
           </div>
         </div>
-      </section>
+      </Inset>
 
-      <TrustRow />
+      <div className="border-y border-hairline">
+        <TrustRow />
+      </div>
 
-      <section className="px-5 py-16 lg:px-12 lg:py-20">
+      <Inset className="py-20 lg:py-28">
         <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="FAQ" title="Questions fleets actually ask." center />
-          <div className="mt-10 divide-y divide-hairline border-y border-hairline">
+          <div className="text-center">
+            <Eyebrow tone="green">FAQ</Eyebrow>
+            <Display level={2} className="mt-4">
+              Questions fleets actually ask.
+            </Display>
+          </div>
+          <div className="mt-12 divide-y divide-hairline border-y border-hairline">
             {faq.map((item) => (
               <details key={item.q} className="group py-5">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-left font-medium text-ink [&::-webkit-details-marker]:hidden">
+                <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-[17px] font-medium text-ink [&::-webkit-details-marker]:hidden">
                   {item.q}
-                  <span className="font-mono text-muted transition group-open:rotate-45">+</span>
+                  <span className="text-ink/40 transition group-open:rotate-45">+</span>
                 </summary>
-                <p className="mt-3 text-sm leading-7 text-muted">{item.a}</p>
+                <p className="mt-3 text-[15px] leading-7 text-ink/60">{item.a}</p>
               </details>
             ))}
           </div>
         </div>
-      </section>
+      </Inset>
 
       <Footer />
     </main>
