@@ -8,7 +8,7 @@ export function FinalCtaBand() {
   return (
     <MotionSection className="pb-16 pt-4 lg:pb-24">
       <Inset>
-        <SectionCard tone="forest" className="px-6 py-16 text-center sm:px-10 lg:py-24">
+        <SectionCard tone="navy" className="px-6 py-16 text-center sm:px-10 lg:py-24">
           <Display level={2} className="text-cream">
             Stop chasing who&apos;s on shift.
           </Display>

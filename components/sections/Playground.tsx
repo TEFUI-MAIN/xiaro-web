@@ -111,13 +111,13 @@ export function Playground() {
                 sizes="(min-width: 1024px) 35vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-ink/40" aria-hidden />
+              <div className="absolute inset-0 bg-night/40" aria-hidden />
               <div className="absolute left-5 top-5">
                 <Chip tone="amber" className="bg-white">
                   Simulation
                 </Chip>
               </div>
-              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 bg-ink/85 px-5 py-4">
+              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 bg-night/85 px-5 py-4">
                 {photoStats.map(([value, label]) => (
                   <div key={label}>
                     <div className="font-mono text-lg text-cream">{value}</div>

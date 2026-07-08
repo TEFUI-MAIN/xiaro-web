@@ -9,7 +9,7 @@ export function Statement() {
         <Display level={2} as="h2">
           Group chats deflect blame.
           <br />
-          Fleets need <span className="text-green-deep">answers.</span>
+          Fleets need <span className="text-brand-gradient-deep">answers.</span>
         </Display>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-7 text-ink/60">
           Xiaro turns every inbound driver message into one clean decision: who owns

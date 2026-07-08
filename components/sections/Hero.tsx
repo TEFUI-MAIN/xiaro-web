@@ -14,13 +14,14 @@ const proofs = ["AU$79/mo to 25 drivers", "No message markups", "No apps to inst
 export function HeroCard() {
   return (
     <Inset className="pt-4">
-      <SectionCard tone="ink" className="overflow-hidden">
+      <SectionCard tone="night" className="overflow-hidden">
         <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:p-16">
           <div className="flex flex-col justify-center">
             <Eyebrow tone="cream">Roster-routed fleet messaging</Eyebrow>
             <Display level={1} className="mt-6 text-cream">
               Every message finds the{" "}
-              <span className="whitespace-nowrap text-volt">right person.</span> Every shift.
+              <span className="text-brand-gradient whitespace-nowrap">right person.</span> Every
+              shift.
             </Display>
             <p className="mt-6 max-w-xl text-lg leading-7 text-cream/75">
               One company number on WhatsApp and SMS. Routed by who&apos;s on shift,
@@ -51,7 +52,7 @@ export function HeroCard() {
               sizes="(min-width: 1024px) 45vw, 100vw"
               className="rounded-2xl object-cover saturate-[.85]"
             />
-            <div className="absolute inset-0 rounded-2xl bg-ink/25" aria-hidden />
+            <div className="absolute inset-0 rounded-2xl bg-night/35" aria-hidden />
 
             <MotionCard
               delay={0.15}

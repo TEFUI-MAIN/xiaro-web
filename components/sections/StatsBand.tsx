@@ -52,7 +52,7 @@ export function StatsBand() {
         <div ref={ref} className="mx-auto mt-16 grid max-w-4xl gap-12 text-center sm:grid-cols-3">
           {stats.map((stat) => (
             <div key={stat.label}>
-              <div className="text-[64px] font-medium leading-none text-green-deep">
+              <div className="text-brand-gradient-deep text-[64px] font-medium leading-none">
                 <CountUp end={stat.end} suffix={stat.suffix} run={inView && !reduce} />
               </div>
               <div className="mt-3 text-base text-ink/60">{stat.label}</div>

@@ -65,7 +65,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="fixed inset-0 top-[61px] z-40 flex flex-col bg-ink px-6 py-10 lg:hidden">
+        <div className="fixed inset-0 top-[61px] z-40 flex flex-col bg-night px-6 py-10 lg:hidden">
           <div className="grid gap-6">
             {links.map((link) => (
               <a

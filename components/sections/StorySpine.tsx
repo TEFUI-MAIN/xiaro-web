@@ -34,9 +34,9 @@ function ConnectorNode({
 }) {
   return (
     <div className="relative z-10 mx-auto grid h-11 w-11 place-items-center rounded-full border-4 border-white shadow-md"
-      style={{ backgroundColor: tone === "volt" ? "#A8F26B" : "#11110D" }}
+      style={{ backgroundColor: tone === "volt" ? "#84F27A" : "#07111F" }}
     >
-      <Icon className={`h-5 w-5 ${tone === "volt" ? "text-ink" : "text-cream"}`} />
+      <Icon className={`h-5 w-5 ${tone === "volt" ? "text-night" : "text-cream"}`} />
     </div>
   );
 }
@@ -83,8 +83,11 @@ export function StorySpine() {
           {!reduce ? (
             <motion.div
               aria-hidden
-              style={{ scaleY }}
-              className="absolute inset-y-0 left-1/2 hidden w-px origin-top -translate-x-1/2 bg-ink lg:block"
+              style={{
+                scaleY,
+                backgroundImage: "linear-gradient(180deg, #18D9FF, #1677FF 55%, #84F27A)"
+              }}
+              className="absolute inset-y-0 left-1/2 hidden w-[2px] origin-top -translate-x-1/2 lg:block"
             />
           ) : null}
 
@@ -101,7 +104,7 @@ export function StorySpine() {
                     {card.glow ? (
                       <div
                         aria-hidden
-                        className="absolute -inset-10 -z-10 bg-[radial-gradient(closest-side,rgba(168,242,107,0.35),transparent)] blur-2xl"
+                        className="absolute -inset-10 -z-10 bg-[radial-gradient(closest-side_at_35%_40%,rgba(24,217,255,0.25),transparent)] blur-2xl"
                       />
                     ) : null}
                     <div className="grid items-center gap-10 p-6 sm:p-12 lg:grid-cols-2 lg:p-16">

@@ -83,7 +83,7 @@ export default function PricingPage() {
               </ul>
             </SectionCard>
 
-            <SectionCard tone="forest" className="p-7 sm:p-9">
+            <SectionCard tone="navy" className="p-7 sm:p-9">
               <h2 className="text-sm font-bold uppercase tracking-[0.75px] text-volt">Why there are no message fees</h2>
               <p className="mt-4 text-[15px] leading-7 text-cream/80">
                 You own your accounts. You pay carriers directly.{" "}
