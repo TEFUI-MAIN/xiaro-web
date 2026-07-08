@@ -89,10 +89,10 @@ export function ForestTour() {
   return (
     <section id="product" className="py-10">
       <Inset>
-        <SectionCard tone="navy" className="overflow-hidden">
+        <SectionCard tone="azure" className="overflow-hidden">
           <div ref={ref} className="p-6 sm:p-10 lg:p-16">
             <Eyebrow tone="volt">Inside the product</Eyebrow>
-            <Display level={2} className="mt-5 max-w-2xl text-cream">
+            <Display level={2} className="mt-5 max-w-2xl text-white">
               The dashboard your ops team watches. No app for anyone else.
             </Display>
 
@@ -118,8 +118,8 @@ export function ForestTour() {
                         setActive((a) => (a - 1 + tabs.length) % tabs.length);
                       }
                     }}
-                    className={`relative border-l-2 border-cream/15 px-5 py-4 text-left text-lg font-medium transition ${
-                      active === index ? "text-cream" : "text-cream/70 hover:text-cream"
+                    className={`relative border-l-2 border-white/25 px-5 py-4 text-left text-lg font-medium transition ${
+                      active === index ? "text-white" : "text-white/75 hover:text-white"
                     }`}
                   >
                     {active === index ? (
@@ -153,12 +153,12 @@ export function ForestTour() {
                           className="w-full"
                         />
                       ) : (
-                        <div className="grid place-items-center bg-navy py-10">
+                        <div className="grid place-items-center bg-night/25 py-10">
                           <LocationMock />
                         </div>
                       )}
                     </GlowFrame>
-                    <p className="mt-5 max-w-xl text-sm leading-6 text-cream/70">
+                    <p className="mt-5 max-w-xl text-sm leading-6 text-white/85">
                       {current.caption}
                     </p>
                   </motion.div>
@@ -169,7 +169,7 @@ export function ForestTour() {
             {/* Mobile: accordion */}
             <div className="mt-10 grid gap-2 lg:hidden">
               {tabs.map((tab, index) => (
-                <div key={tab.label} className="border-b border-cream/15 pb-2">
+                <div key={tab.label} className="border-b border-white/25 pb-2">
                   <button
                     type="button"
                     aria-expanded={active === index}
@@ -178,11 +178,11 @@ export function ForestTour() {
                       setActive(index);
                     }}
                     className={`flex w-full items-center justify-between py-3 text-left text-base font-medium ${
-                      active === index ? "text-cream" : "text-cream/70"
+                      active === index ? "text-white" : "text-white/75"
                     }`}
                   >
                     {tab.label}
-                    <span className="text-cream/40">{active === index ? "−" : "+"}</span>
+                    <span className="text-white/60">{active === index ? "−" : "+"}</span>
                   </button>
                   {active === index ? (
                     <div className="pb-4">
@@ -200,7 +200,7 @@ export function ForestTour() {
                           <LocationMock />
                         </div>
                       )}
-                      <p className="mt-3 text-sm leading-6 text-cream/70">{tab.caption}</p>
+                      <p className="mt-3 text-sm leading-6 text-white/85">{tab.caption}</p>
                     </div>
                   ) : null}
                 </div>
