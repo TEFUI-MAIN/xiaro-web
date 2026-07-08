@@ -1,28 +1,32 @@
-import { CostAndScenarios } from "@/components/sections/CostAndScenarios";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { Announcement } from "@/components/sections/Announcement";
+import { AudienceCards } from "@/components/sections/AudienceCards";
 import { Footer } from "@/components/sections/Footer";
+import { ForestTour } from "@/components/sections/ForestTour";
 import { Header } from "@/components/sections/Header";
-import { Hero } from "@/components/sections/Hero";
-import { HowItWorksScrolly } from "@/components/sections/HowItWorksScrolly";
+import { HeroCard } from "@/components/sections/Hero";
+import { FinalCtaBand } from "@/components/sections/FinalCtaBand";
+import { PricingTeaser } from "@/components/sections/PricingTeaser";
+import { StatsBand } from "@/components/sections/StatsBand";
+import { StorySpine } from "@/components/sections/StorySpine";
 import { Playground } from "@/components/sections/Playground";
-import { Industries } from "@/components/sections/Industries";
-import { PricingSummary } from "@/components/sections/PricingSummary";
-import { Problem } from "@/components/sections/Problem";
-import { ProductTour } from "@/components/sections/ProductTour";
+import { Statement } from "@/components/sections/Statement";
+import { TrustRow } from "@/components/sections/TrustRow";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-paper text-ink">
+    <main className="min-h-screen overflow-x-clip bg-white text-ink">
+      <Announcement />
       <Header />
-      <Hero />
-      <Problem />
-      <CostAndScenarios />
-      <HowItWorksScrolly />
+      <HeroCard />
+      <TrustRow />
+      <Statement />
+      <StorySpine />
+      <StatsBand />
+      <ForestTour />
+      <AudienceCards />
       <Playground />
-      <ProductTour />
-      <Industries />
-      <PricingSummary />
-      <FinalCta />
+      <PricingTeaser />
+      <FinalCtaBand />
       <Footer />
     </main>
   );

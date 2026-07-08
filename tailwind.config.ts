@@ -8,19 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#FAFAF7",
-        card: "#FFFFFF",
-        ink: "#14181F",
-        muted: "#5B6472",
-        hairline: "#E3E1DA",
-        green: { DEFAULT: "#1FA45B", deep: "#17834A" },
+        ink: "#11110D",
+        cream: "#F5F5F2",
+        forest: "#1C3626",
+        volt: "#A8F26B",
+        "green-deep": "#17834A",
+        hairline: "#E8E8E4",
         amber: "#E8A13A",
-        signal: "#D64545",
-        panel: "#10141B"
+        signal: "#D64545"
       },
       fontFamily: {
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"]
       }
     }

@@ -12,8 +12,8 @@ html {
 
 body {
   margin: 0;
-  background: #fafaf7;
-  color: #14181f;
+  background: #ffffff;
+  color: #11110d;
 }
 
 .font-mono {
@@ -21,5 +21,5 @@ body {
 }
 
 ::selection {
-  background: rgba(31, 164, 91, 0.25);
+  background: rgba(168, 242, 107, 0.45);
 }
