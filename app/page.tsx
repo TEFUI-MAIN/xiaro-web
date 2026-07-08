@@ -4,6 +4,8 @@ import { Footer } from "@/components/sections/Footer";
 import { ForestTour } from "@/components/sections/ForestTour";
 import { Header } from "@/components/sections/Header";
 import { HeroCard } from "@/components/sections/Hero";
+import { FinalCtaBand } from "@/components/sections/FinalCtaBand";
+import { PricingTeaser } from "@/components/sections/PricingTeaser";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { StorySpine } from "@/components/sections/StorySpine";
 import { Playground } from "@/components/sections/Playground";
@@ -22,8 +24,9 @@ export default function Home() {
       <StatsBand />
       <ForestTour />
       <AudienceCards />
-      {/* Playground restyled in Task 6; teaser + final band land there too. */}
       <Playground />
+      <PricingTeaser />
+      <FinalCtaBand />
       <Footer />
     </main>
   );
