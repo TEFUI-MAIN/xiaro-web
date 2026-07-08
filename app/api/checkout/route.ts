@@ -1,34 +1,46 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { isCheckoutPlan, stripePriceEnvByPlan } from "@/lib/checkout";
+import { checkoutEnvReady, parseCheckoutRequest } from "@/lib/checkout";
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  const plan = body?.plan;
-
-  if (!isCheckoutPlan(plan)) {
-    return NextResponse.json({ error: "Invalid plan selected." }, { status: 400 });
+  if (!checkoutEnvReady()) {
+    return NextResponse.json({ error: "checkout_unconfigured" }, { status: 503 });
   }
 
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-  const priceId = process.env[stripePriceEnvByPlan[plan]];
-
-  if (!secretKey || !appUrl || !priceId) {
-    return NextResponse.json(
-      { error: "Stripe checkout not configured yet." },
-      { status: 503 }
-    );
+  const parsed = parseCheckoutRequest(await request.json().catch(() => null));
+  if (!parsed) {
+    return NextResponse.json({ error: "invalid_request" }, { status: 400 });
   }
 
-  const stripe = new Stripe(secretKey);
-  const session = await stripe.checkout.sessions.create({
-    mode: "subscription",
-    line_items: [{ price: priceId, quantity: 1 }],
-    success_url: `${appUrl}/?checkout=success`,
-    cancel_url: `${appUrl}/pricing?checkout=cancelled`,
-    allow_promotion_codes: true
-  });
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+  const basePrice =
+    parsed.interval === "annual"
+      ? (process.env.STRIPE_BASE_ANNUAL_PRICE_ID as string)
+      : (process.env.STRIPE_BASE_MONTHLY_PRICE_ID as string);
 
-  return NextResponse.json({ url: session.url });
+  const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
+    { price: basePrice, quantity: parsed.drivers }
+  ];
+  if (parsed.onboarding) {
+    line_items.push({
+      price: process.env.STRIPE_ONBOARDING_PRICE_ID as string,
+      quantity: 1
+    });
+  }
+
+  const origin = request.headers.get("origin") ?? "https://xiaro.com.au";
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      line_items,
+      allow_promotion_codes: true,
+      success_url: `${origin}/thanks`,
+      cancel_url: `${origin}/pricing?checkout=cancelled`
+    });
+    return NextResponse.json({ url: session.url });
+  } catch (error) {
+    console.error("Stripe checkout session failed", error);
+    return NextResponse.json({ error: "checkout_failed" }, { status: 502 });
+  }
 }

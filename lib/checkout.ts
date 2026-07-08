@@ -1,11 +1,26 @@
-export type CheckoutPlan = "starter" | "operations" | "business";
+import { MAX_DRIVERS } from "./pricing";
 
-export const stripePriceEnvByPlan: Record<CheckoutPlan, string> = {
-  starter: "STRIPE_STARTER_PRICE_ID",
-  operations: "STRIPE_OPERATIONS_PRICE_ID",
-  business: "STRIPE_BUSINESS_PRICE_ID"
+export type CheckoutRequest = {
+  interval: "monthly" | "annual";
+  drivers: number;
+  onboarding: boolean;
 };
 
-export function isCheckoutPlan(value: unknown): value is CheckoutPlan {
-  return value === "starter" || value === "operations" || value === "business";
+export function parseCheckoutRequest(body: unknown): CheckoutRequest | null {
+  if (typeof body !== "object" || body === null) return null;
+  const { interval, drivers, onboarding } = body as Record<string, unknown>;
+  if (interval !== "monthly" && interval !== "annual") return null;
+  if (typeof drivers !== "number" || !Number.isInteger(drivers)) return null;
+  if (drivers < 1 || drivers > MAX_DRIVERS) return null;
+  if (typeof onboarding !== "boolean") return null;
+  return { interval, drivers, onboarding };
+}
+
+export function checkoutEnvReady(): boolean {
+  return Boolean(
+    process.env.STRIPE_SECRET_KEY &&
+      process.env.STRIPE_BASE_MONTHLY_PRICE_ID &&
+      process.env.STRIPE_BASE_ANNUAL_PRICE_ID &&
+      process.env.STRIPE_ONBOARDING_PRICE_ID
+  );
 }
