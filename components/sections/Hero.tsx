@@ -68,7 +68,7 @@ export function HeroCard() {
                   Truck 41 — flat tyre on the M7, need a tow
                 </p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="text-xs text-ink/50">WhatsApp · company number</span>
+                  <span className="text-xs text-ink/60">WhatsApp · company number</span>
                   <span className="font-mono text-xs text-ink/60">02:47</span>
                 </div>
               </div>

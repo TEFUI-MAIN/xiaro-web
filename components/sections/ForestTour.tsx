@@ -32,7 +32,7 @@ function LocationMock() {
           <p className="mt-0.5 leading-5 text-ink">
             Can you share your location so the tow finds you?
           </p>
-          <p className="mt-1 text-right font-mono text-[9.5px] text-ink/45">02:52</p>
+          <p className="mt-1 text-right font-mono text-[9.5px] text-ink/55">02:52</p>
         </div>
 
         <div className="max-w-[88%] self-start overflow-hidden rounded-lg rounded-tl-none bg-white shadow-sm">
@@ -59,7 +59,7 @@ function LocationMock() {
           </div>
           <p className="px-3 py-2.5 text-[13px] leading-5 text-ink">
             Current location — shared once
-            <span className="mt-0.5 block font-mono text-[9.5px] text-ink/45">02:53 ✓✓</span>
+            <span className="mt-0.5 block font-mono text-[9.5px] text-ink/55">02:53 ✓✓</span>
           </p>
         </div>
 
