@@ -16,7 +16,7 @@ export function Industries() {
     <MotionSection id="industries" className="border-b border-hairline px-5 py-20 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          number="05"
+          number="06"
           eyebrow="Industries"
           title="Built for shift-based operations."
           copy="Wherever the right contact depends on site, shift, roster and escalation rules."

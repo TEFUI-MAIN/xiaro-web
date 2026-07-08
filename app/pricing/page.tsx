@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Check } from "lucide-react";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { Footer } from "@/components/sections/Footer";
@@ -52,7 +53,11 @@ export default function PricingPage() {
             copy="AU$79/month covers your first 25 drivers with every feature included. AU$3 per driver after that. That's the whole model."
           />
           <div className="mt-12 grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <PricingCalculator />
+            <Suspense
+              fallback={<div className="h-[560px] rounded-2xl border border-hairline bg-card" />}
+            >
+              <PricingCalculator />
+            </Suspense>
             <div className="grid gap-6">
               <div className="rounded-2xl border border-hairline bg-card p-6 sm:p-8">
                 <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-muted">

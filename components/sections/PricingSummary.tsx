@@ -20,7 +20,7 @@ export function PricingSummary() {
     <MotionSection className="border-b border-hairline bg-card px-5 py-20 lg:px-12 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          number="06"
+          number="07"
           eyebrow="Pricing"
           title="One plan. Your own accounts. No markups."
           center

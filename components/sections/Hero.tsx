@@ -1,8 +1,7 @@
 import { MotionCard } from "@/components/Motion";
+import { JourneyLoop } from "@/components/hero/JourneyLoop";
 import { Button } from "@/components/ui/Button";
-import { ChatMock } from "@/components/ui/ChatMock";
 import { Chip } from "@/components/ui/Chip";
-import { PhoneFrame } from "@/components/ui/PhoneFrame";
 import { Stat } from "@/components/ui/Stat";
 import { BOOKING_URL } from "@/lib/links";
 
@@ -41,11 +40,7 @@ export function Hero() {
           </div>
         </MotionCard>
         <MotionCard delay={0.08} className="justify-self-center lg:justify-self-end">
-          <div className="rotate-1 rounded-2xl border border-hairline bg-card p-4 sm:p-8">
-            <PhoneFrame>
-              <ChatMock />
-            </PhoneFrame>
-          </div>
+          <JourneyLoop />
         </MotionCard>
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { Chip } from "@/components/ui/Chip";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +19,11 @@ import { BOOKING_URL } from "@/lib/links";
 type Interval = "monthly" | "annual";
 
 export function PricingCalculator() {
-  const [drivers, setDrivers] = useState(INCLUDED_DRIVERS);
+  const params = useSearchParams();
+  const [drivers, setDrivers] = useState(() => {
+    const q = Number(params.get("drivers"));
+    return Number.isInteger(q) && q >= 1 && q <= MAX_DRIVERS ? q : INCLUDED_DRIVERS;
+  });
   const [interval, setInterval] = useState<Interval>("monthly");
   const [onboarding, setOnboarding] = useState(true);
   const [pending, setPending] = useState(false);

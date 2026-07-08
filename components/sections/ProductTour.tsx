@@ -84,7 +84,7 @@ export function ProductTour() {
     <section id="product" className="px-5 py-10 lg:px-12">
       <div className="mx-auto max-w-7xl pt-10">
         <SectionHeading
-          number="04"
+          number="05"
           eyebrow="Inside the product"
           title="The dashboard your ops team watches. No app for anyone else."
           copy="Drivers and supervisors keep using WhatsApp and SMS. Operations gets the screen that shows who owns what, right now."
