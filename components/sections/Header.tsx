@@ -16,6 +16,9 @@ export function Header() {
           <a href="/#product" className="transition hover:text-ink">
             Product
           </a>
+          <a href="/#try-it" className="transition hover:text-ink">
+            Try it
+          </a>
           <a href="/#industries" className="transition hover:text-ink">
             Industries
           </a>

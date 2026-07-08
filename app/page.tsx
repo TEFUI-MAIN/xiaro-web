@@ -4,6 +4,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorksScrolly } from "@/components/sections/HowItWorksScrolly";
+import { Playground } from "@/components/sections/Playground";
 import { Industries } from "@/components/sections/Industries";
 import { PricingSummary } from "@/components/sections/PricingSummary";
 import { Problem } from "@/components/sections/Problem";
@@ -17,6 +18,7 @@ export default function Home() {
       <Problem />
       <CostAndScenarios />
       <HowItWorksScrolly />
+      <Playground />
       <ProductTour />
       <Industries />
       <PricingSummary />
