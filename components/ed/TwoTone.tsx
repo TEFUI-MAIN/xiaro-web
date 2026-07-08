@@ -6,13 +6,15 @@ export function TwoTone({
   rest,
   size = "lg",
   className,
-  as: Tag = "h2"
+  as: Tag = "h2",
+  dark = false
 }: {
   lead: string;
   rest?: string;
   size?: "xl" | "lg" | "md";
   className?: string;
   as?: "h1" | "h2" | "h3" | "p";
+  dark?: boolean;
 }) {
   return (
     <Tag
@@ -24,7 +26,7 @@ export function TwoTone({
         className
       )}
     >
-      <span className="text-ink">{lead}</span>
+      <span className={dark ? "text-cream" : "text-ink"}>{lead}</span>
       {rest ? <span className="text-graylt"> {rest}</span> : null}
     </Tag>
   );
