@@ -19,11 +19,8 @@ export function HeroCard() {
           <div className="flex flex-col justify-center">
             <Eyebrow tone="cream">Roster-routed fleet messaging</Eyebrow>
             <Display level={1} className="mt-6 text-cream">
-              Every message finds
-              <br />
-              the <span className="text-volt">right&nbsp;person.</span>
-              <br />
-              Every shift.
+              Every message finds the{" "}
+              <span className="whitespace-nowrap text-volt">right person.</span> Every shift.
             </Display>
             <p className="mt-6 max-w-xl text-lg leading-7 text-cream/75">
               One company number on WhatsApp and SMS. Routed by who&apos;s on shift,

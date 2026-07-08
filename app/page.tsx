@@ -4,8 +4,9 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { HeroCard } from "@/components/sections/Hero";
-import { HowItWorksScrolly } from "@/components/sections/HowItWorksScrolly";
 import { Industries } from "@/components/sections/Industries";
+import { StatsBand } from "@/components/sections/StatsBand";
+import { StorySpine } from "@/components/sections/StorySpine";
 import { Playground } from "@/components/sections/Playground";
 import { PricingSummary } from "@/components/sections/PricingSummary";
 import { ProductTour } from "@/components/sections/ProductTour";
@@ -20,8 +21,9 @@ export default function Home() {
       <HeroCard />
       <TrustRow />
       <Statement />
-      {/* Sections below are progressively replaced by the zd rebuild (Tasks 4–6). */}
-      <HowItWorksScrolly />
+      <StorySpine />
+      <StatsBand />
+      {/* Sections below are progressively replaced by the zd rebuild (Tasks 5–6). */}
       <Playground />
       <ProductTour />
       <CostAndScenarios />
