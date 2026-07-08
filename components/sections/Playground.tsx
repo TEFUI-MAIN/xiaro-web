@@ -31,8 +31,8 @@ const SCENARIOS = [
 ];
 
 const toneDot = {
-  ink: "bg-ink",
-  green: "bg-green-deep",
+  ink: "bg-cream/70",
+  green: "bg-volt",
   amber: "bg-amber",
   signal: "bg-signal"
 } as const;
@@ -99,17 +99,18 @@ export function Playground() {
   }
 
   return (
-    <section id="try-it" className="border-t border-hairline py-24 lg:py-36">
+    <section id="try-it" className="bg-night py-24 lg:py-36">
       <MotionSection>
       <Ed>
         <div className="mb-12">
           <TwoTone
+            dark
             lead="Don't take my word for it."
             rest="Pick a message and a time, then watch me work. It's a simulation — the real me does this with your roster, on your number."
           />
         </div>
 
-        <div className="overflow-hidden border border-hairline bg-white">
+        <div className="overflow-hidden border border-white/15 bg-[#0B1626]">
           <div className="grid lg:grid-cols-[0.4fr_0.6fr]">
             <div className="relative min-h-[280px] lg:min-h-full">
               <Image
@@ -137,14 +138,14 @@ export function Playground() {
 
             <div className="grid gap-6 p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
-                <label htmlFor="sim-scenario" className="text-sm font-semibold text-ink">
+                <label htmlFor="sim-scenario" className="text-sm font-semibold text-cream">
                   Scenario
                 </label>
                 <select
                   id="sim-scenario"
                   value={scenarioIdx}
                   onChange={(event) => setScenarioIdx(Number(event.target.value))}
-                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink max-sm:min-h-[44px]"
+                  className="mt-2 w-full border border-white/20 bg-white/[0.06] px-3 py-2.5 text-sm text-cream max-sm:min-h-[44px] [&>option]:text-ink"
                 >
                   {SCENARIOS.map((scenario, index) => (
                     <option key={scenario.label} value={index}>
@@ -153,7 +154,7 @@ export function Playground() {
                   ))}
                 </select>
 
-                <label htmlFor="sim-custom" className="mt-5 block text-sm font-semibold text-ink">
+                <label htmlFor="sim-custom" className="mt-5 block text-sm font-semibold text-cream">
                   Or type your own message
                 </label>
                 <input
@@ -163,10 +164,10 @@ export function Playground() {
                   value={custom}
                   onChange={(event) => setCustom(event.target.value)}
                   placeholder={SCENARIOS[scenarioIdx].message}
-                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink/40 max-sm:min-h-[44px]"
+                  className="mt-2 w-full border border-white/20 bg-white/[0.06] px-3 py-2.5 text-sm text-cream placeholder:text-cream/40 max-sm:min-h-[44px]"
                 />
 
-                <div className="mt-5 flex border border-hairline bg-white p-1 text-xs font-semibold">
+                <div className="mt-5 flex border border-white/20 p-1 text-xs font-semibold">
                   {[
                     { value: true, label: "Supervisor answers" },
                     { value: false, label: "Supervisor misses it" }
@@ -176,7 +177,7 @@ export function Playground() {
                       type="button"
                       onClick={() => setAnswers(option.value)}
                       className={`flex-1 rounded-md px-3 py-2 transition max-sm:min-h-[40px] ${
-                        answers === option.value ? "bg-ink text-cream" : "text-ink/60 hover:text-ink"
+                        answers === option.value ? "bg-cream text-night" : "text-cream/75 hover:text-cream"
                       }`}
                     >
                       {option.label}
@@ -187,7 +188,7 @@ export function Playground() {
                 <PillLink
                   onClick={run}
                   disabled={playing}
-                  variant="solid"
+                  variant="white"
                   arrow={false}
                   className="mt-6 w-full justify-center py-3 text-[14px]"
                 >
@@ -198,10 +199,10 @@ export function Playground() {
 
               <div
                 aria-live="polite"
-                className="h-[440px] overflow-y-auto border border-hairline bg-cream/50 p-5 sm:h-[460px] sm:p-6"
+                className="h-[440px] overflow-y-auto border border-white/15 bg-night p-5 sm:h-[460px] sm:p-6"
               >
                 {events.length === 0 ? (
-                  <p className="font-mono text-[13px] text-ink/60">
+                  <p className="font-mono text-[13px] text-cream/60">
                     ▸ Event log — hit &ldquo;Run the routing&rdquo; to watch the decision happen.
                   </p>
                 ) : (
@@ -213,7 +214,7 @@ export function Playground() {
                           aria-hidden
                         />
                         <span className="font-mono text-xs text-ink/60">{event.clock}</span>
-                        <span className="flex-1 text-sm leading-6 text-ink">{event.text}</span>
+                        <span className="flex-1 text-sm leading-6 text-cream/90">{event.text}</span>
                       </div>
                     ))}
                     {playing ? (
@@ -221,7 +222,7 @@ export function Playground() {
                         {[0, 1, 2].map((dot) => (
                           <span
                             key={dot}
-                            className="h-1.5 w-1.5 animate-pulse rounded-full bg-azure/60"
+                            className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky/70"
                             style={{ animationDelay: `${dot * 200}ms` }}
                           />
                         ))}
@@ -229,11 +230,13 @@ export function Playground() {
                     ) : null}
                     {done ? (
                       <div className="mt-2 flex items-center justify-between gap-3">
-                        <Chip tone="green">Logged · audit row written</Chip>
+                        <span className="inline-flex items-center rounded-[3px] border border-volt/40 bg-volt/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-volt">
+                          Logged · audit row written
+                        </span>
                         <button
                           type="button"
                           onClick={run}
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-ink/60 transition hover:text-ink"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-cream/70 transition hover:text-cream"
                         >
                           <RotateCcw className="h-3.5 w-3.5" />
                           Replay
@@ -248,7 +251,7 @@ export function Playground() {
         </div>
 
         <div className="mt-8">
-          <PillLink href={BOOKING_URL}>Book a demo</PillLink>
+          <PillLink href={BOOKING_URL} variant="whiteOutline">Book a demo</PillLink>
         </div>
       </Ed>
       </MotionSection>
