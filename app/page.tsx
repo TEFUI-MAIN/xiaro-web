@@ -1,25 +1,30 @@
+import { Announcement } from "@/components/sections/Announcement";
 import { CostAndScenarios } from "@/components/sections/CostAndScenarios";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
-import { Hero } from "@/components/sections/Hero";
+import { HeroCard } from "@/components/sections/Hero";
 import { HowItWorksScrolly } from "@/components/sections/HowItWorksScrolly";
-import { Playground } from "@/components/sections/Playground";
 import { Industries } from "@/components/sections/Industries";
+import { Playground } from "@/components/sections/Playground";
 import { PricingSummary } from "@/components/sections/PricingSummary";
-import { Problem } from "@/components/sections/Problem";
 import { ProductTour } from "@/components/sections/ProductTour";
+import { Statement } from "@/components/sections/Statement";
+import { TrustRow } from "@/components/sections/TrustRow";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-paper text-ink">
+    <main className="min-h-screen bg-white text-ink">
+      <Announcement />
       <Header />
-      <Hero />
-      <Problem />
-      <CostAndScenarios />
+      <HeroCard />
+      <TrustRow />
+      <Statement />
+      {/* Sections below are progressively replaced by the zd rebuild (Tasks 4–6). */}
       <HowItWorksScrolly />
       <Playground />
       <ProductTour />
+      <CostAndScenarios />
       <Industries />
       <PricingSummary />
       <FinalCta />
