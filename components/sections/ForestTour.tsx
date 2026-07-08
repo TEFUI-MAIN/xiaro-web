@@ -89,7 +89,7 @@ export function ForestTour() {
   return (
     <section id="product" className="py-10">
       <Inset>
-        <SectionCard tone="forest" className="overflow-hidden">
+        <SectionCard tone="navy" className="overflow-hidden">
           <div ref={ref} className="p-6 sm:p-10 lg:p-16">
             <Eyebrow tone="volt">Inside the product</Eyebrow>
             <Display level={2} className="mt-5 max-w-2xl text-cream">
@@ -118,12 +118,17 @@ export function ForestTour() {
                         setActive((a) => (a - 1 + tabs.length) % tabs.length);
                       }
                     }}
-                    className={`border-l-2 px-5 py-4 text-left text-lg font-medium transition ${
-                      active === index
-                        ? "border-volt text-cream"
-                        : "border-cream/15 text-cream/70 hover:text-cream"
+                    className={`relative border-l-2 border-cream/15 px-5 py-4 text-left text-lg font-medium transition ${
+                      active === index ? "text-cream" : "text-cream/70 hover:text-cream"
                     }`}
                   >
+                    {active === index ? (
+                      <motion.span
+                        layoutId="tour-rail"
+                        aria-hidden
+                        className="absolute -left-[2px] top-0 h-full w-[2px] bg-volt"
+                      />
+                    ) : null}
                     {tab.label}
                   </button>
                 ))}
@@ -148,7 +153,7 @@ export function ForestTour() {
                           className="w-full"
                         />
                       ) : (
-                        <div className="grid place-items-center bg-forest py-10">
+                        <div className="grid place-items-center bg-navy py-10">
                           <LocationMock />
                         </div>
                       )}

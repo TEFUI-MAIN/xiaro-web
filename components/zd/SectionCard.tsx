@@ -1,8 +1,8 @@
 import clsx from "clsx";
 
 const tones = {
-  ink: "bg-ink text-cream",
-  forest: "bg-forest text-cream",
+  night: "bg-night text-cream",
+  navy: "bg-navy text-cream",
   gray: "bg-cream text-ink"
 } as const;
 

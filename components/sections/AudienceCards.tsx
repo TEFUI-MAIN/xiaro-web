@@ -81,7 +81,7 @@ export function AudienceCards() {
           {cards.map((card, index) => (
             <MotionCard key={card.title} delay={index * 0.08}>
               <SectionCard tone="gray" className="overflow-hidden">
-                <div className="grid min-h-[280px] place-items-center bg-forest p-10">
+                <div className="grid min-h-[280px] place-items-center bg-navy p-10">
                   <div className="w-full max-w-[300px]">{card.vignette}</div>
                 </div>
                 <div className="p-8 sm:p-10">

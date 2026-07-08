@@ -111,13 +111,13 @@ export function Playground() {
                 sizes="(min-width: 1024px) 35vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-ink/40" aria-hidden />
+              <div className="absolute inset-0 bg-night/40" aria-hidden />
               <div className="absolute left-5 top-5">
                 <Chip tone="amber" className="bg-white">
                   Simulation
                 </Chip>
               </div>
-              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 bg-ink/85 px-5 py-4">
+              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 bg-night/85 px-5 py-4">
                 {photoStats.map(([value, label]) => (
                   <div key={label}>
                     <div className="font-mono text-lg text-cream">{value}</div>
@@ -206,6 +206,17 @@ export function Playground() {
                         <span className="flex-1 text-sm leading-6 text-ink">{event.text}</span>
                       </div>
                     ))}
+                    {playing ? (
+                      <div className="flex items-center gap-1.5 pl-5" aria-hidden>
+                        {[0, 1, 2].map((dot) => (
+                          <span
+                            key={dot}
+                            className="h-1.5 w-1.5 animate-pulse rounded-full bg-azure/60"
+                            style={{ animationDelay: `${dot * 200}ms` }}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
                     {done ? (
                       <div className="mt-2 flex items-center justify-between gap-3">
                         <Chip tone="green">Logged · audit row written</Chip>

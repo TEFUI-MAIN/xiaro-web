@@ -1,9 +1,9 @@
 import clsx from "clsx";
 
 const variants = {
-  volt: "bg-volt text-ink hover:brightness-95",
-  outline: "border border-ink/20 text-ink hover:bg-ink/5",
-  cream: "border border-cream/30 text-cream hover:bg-cream/10"
+  volt: "bg-volt text-night hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(132,242,122,0.35)]",
+  outline: "border border-ink/20 text-ink hover:-translate-y-0.5 hover:bg-ink/5",
+  cream: "border border-cream/30 text-cream hover:-translate-y-0.5 hover:bg-cream/10"
 } as const;
 
 export function Pill({

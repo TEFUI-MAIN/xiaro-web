@@ -8,12 +8,18 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px; /* anchor jumps clear the sticky nav */
+}
+
+:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 2px;
 }
 
 body {
   margin: 0;
   background: #ffffff;
-  color: #11110d;
+  color: #0e141f;
 }
 
 .font-mono {
@@ -21,5 +27,19 @@ body {
 }
 
 ::selection {
-  background: rgba(168, 242, 107, 0.45);
+  background: rgba(132, 242, 122, 0.4);
+}
+
+.text-brand-gradient {
+  background-image: linear-gradient(92deg, #18d9ff, #1677ff 45%, #84f27a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-brand-gradient-deep {
+  background-image: linear-gradient(92deg, #1677ff, #17834a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

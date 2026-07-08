@@ -31,7 +31,7 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="bg-ink px-4 pb-10 pt-20 text-cream sm:px-6 lg:px-10">
+    <footer className="bg-night px-4 pb-10 pt-20 text-cream sm:px-6 lg:px-10">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
@@ -57,7 +57,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-cream/15 pt-12">
+        <div className="relative mt-16 pt-12">
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,#18D9FF,#1677FF_45%,#84F27A)] opacity-60"
+          />
           <Display level={2} as="p">
             Who&apos;s on shift right now?{" "}
             <a
