@@ -106,13 +106,13 @@ export function Playground() {
           <div className="grid lg:grid-cols-[0.4fr_0.6fr]">
             <div className="relative min-h-[280px] lg:min-h-full">
               <Image
-                src="/photos/night-headlights.jpg"
-                alt="Truck headlights on a dark road at night"
+                src="/photos/driver-cab-night.jpg"
+                alt="Driver in a truck cab at night reading a message on his phone"
                 fill
                 sizes="(min-width: 1024px) 35vw, 100vw"
-                className="object-cover"
+                className="object-cover object-[75%_center]"
               />
-              <div className="absolute inset-0 bg-night/40" aria-hidden />
+              <div className="absolute inset-0 bg-night/20" aria-hidden />
               <div className="absolute left-5 top-5">
                 <Chip tone="amber" className="bg-white">
                   Simulation
@@ -189,7 +189,7 @@ export function Playground() {
 
               <div
                 aria-live="polite"
-                className="min-h-[280px] rounded-xl border border-hairline bg-white p-5 sm:p-6"
+                className="h-[440px] overflow-y-auto rounded-xl border border-hairline bg-white p-5 sm:h-[460px] sm:p-6"
               >
                 {events.length === 0 ? (
                   <p className="font-mono text-xs text-ink/50">
