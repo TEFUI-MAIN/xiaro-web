@@ -37,7 +37,7 @@ function ConnectorNode({
     <motion.div
       initial={reduce ? false : { opacity: 0, scale: 0.4 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
+      viewport={{ once: false, margin: "-25% 0px -25% 0px" }}
       transition={{ type: "spring", stiffness: 320, damping: 20 }}
       className="relative z-10 mx-auto grid h-11 w-11 place-items-center rounded-full border-4 border-white shadow-md"
       style={{ backgroundColor: tone === "volt" ? "#84F27A" : "#07111F" }}
