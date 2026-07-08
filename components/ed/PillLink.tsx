@@ -26,7 +26,7 @@ export function PillLink({
   disabled?: boolean;
 }) {
   const cls = clsx(
-    "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium transition",
+    "group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium transition",
     variants[variant],
     disabled && "cursor-not-allowed opacity-60",
     className
@@ -34,7 +34,7 @@ export function PillLink({
   const body = (
     <>
       {children}
-      {arrow ? <span aria-hidden>→</span> : null}
+      {arrow ? <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span> : null}
     </>
   );
   if (href) {

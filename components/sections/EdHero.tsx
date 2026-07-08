@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { EdTicker } from "@/components/ed/EdTicker";
 import { PillLink } from "@/components/ed/PillLink";
 import { BOOKING_URL } from "@/lib/links";
 
@@ -32,8 +33,11 @@ export function EdHero() {
             Get started
           </PillLink>
           <PillLink href={BOOKING_URL} variant="whiteOutline">
-            Book a demo
+            See your roster routing in 15 minutes
           </PillLink>
+        </div>
+        <div className="mt-12">
+          <EdTicker />
         </div>
         <p className="absolute bottom-8 left-1/2 w-full -translate-x-1/2 px-5 text-[11px] uppercase tracking-[0.14em] text-white/60">
           Official WhatsApp Business API · Carrier-grade SMS · Audit-grade logging · Built in Australia

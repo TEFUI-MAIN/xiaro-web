@@ -1,6 +1,8 @@
+import { EdAnswers } from "@/components/sections/EdAnswers";
 import { EdCapabilities } from "@/components/sections/EdCapabilities";
 import { EdFooter } from "@/components/sections/EdFooter";
 import { EdHero } from "@/components/sections/EdHero";
+import { EdManifesto } from "@/components/sections/EdManifesto";
 import { EdNav } from "@/components/sections/EdNav";
 import { EdPricing } from "@/components/sections/EdPricing";
 import { EdProductPeek } from "@/components/sections/EdProductPeek";
@@ -16,6 +18,8 @@ export default function Home() {
       <EdProductPeek />
       <EdScenarios />
       <Playground />
+      <EdAnswers />
+      <EdManifesto />
       <EdPricing />
       <EdFooter />
     </main>

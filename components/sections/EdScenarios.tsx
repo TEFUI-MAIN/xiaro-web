@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { MotionCard } from "@/components/Motion";
 import { Ed } from "@/components/ed/Ed";
@@ -5,18 +7,21 @@ import { TwoTone } from "@/components/ed/TwoTone";
 
 const scenarios = [
   {
+    sim: { idx: 0, answers: true },
     category: "Night shift",
     title: "The 2:47 am flat tyre nobody used to answer",
     src: "/photos/driver-cab-night.jpg",
     alt: "Driver in a truck cab at night"
   },
   {
+    sim: { idx: 2, answers: false },
     category: "Changeover",
     title: "The 2 pm handover where messages used to vanish",
     src: "/photos/hero-truck-dusk.jpg",
     alt: "Truck crossing a bridge at dusk"
   },
   {
+    sim: { idx: 1, answers: false },
     category: "Dispute",
     title: "The withheld invoice, answered with an audit export",
     src: "/photos/ops-supervisor.jpg",
@@ -35,7 +40,15 @@ export function EdScenarios() {
         <div className="mt-14 grid gap-8 md:grid-cols-3">
           {scenarios.map((scenario, index) => (
             <MotionCard key={scenario.title} delay={index * 0.06}>
-              <a href="/#try-it" className="group block">
+              <a
+                href="/#try-it"
+                className="group block"
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent("xiaro:scenario", { detail: scenario.sim })
+                  );
+                }}
+              >
                 <div className="relative h-[300px] overflow-hidden lg:h-[360px]">
                   <Image
                     src={scenario.src}
