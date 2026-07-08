@@ -192,7 +192,7 @@ export function Playground() {
                 className="h-[440px] overflow-y-auto rounded-xl border border-hairline bg-white p-5 sm:h-[460px] sm:p-6"
               >
                 {events.length === 0 ? (
-                  <p className="font-mono text-xs text-ink/50">
+                  <p className="font-mono text-xs text-ink/60">
                     ▸ Event log — hit &ldquo;Run the routing&rdquo; to watch the decision happen.
                   </p>
                 ) : (
@@ -203,7 +203,7 @@ export function Playground() {
                           className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${toneDot[event.tone]}`}
                           aria-hidden
                         />
-                        <span className="font-mono text-xs text-ink/50">{event.clock}</span>
+                        <span className="font-mono text-xs text-ink/60">{event.clock}</span>
                         <span className="flex-1 text-sm leading-6 text-ink">{event.text}</span>
                       </div>
                     ))}

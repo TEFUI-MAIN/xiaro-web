@@ -16,12 +16,12 @@ export function HeroCard() {
     <Inset className="pt-4">
       <SectionCard tone="night" className="relative overflow-hidden">
         <Image
-          src="/photos/hero-truck-dusk.jpg"
-          alt="Freight truck crossing a steel bridge at dusk"
+          src="/photos/xiaro-splash.jpg"
+          alt="Convoy of freight trucks at sunset with a connected-network globe on the horizon"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[70%_center] saturate-[.85]"
+          className="object-cover object-[72%_center]"
         />
         <div
           aria-hidden
@@ -68,7 +68,7 @@ export function HeroCard() {
                   Truck 41 — flat tyre on the M7, need a tow
                 </p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="text-xs text-ink/50">WhatsApp · company number</span>
+                  <span className="text-xs text-ink/60">WhatsApp · company number</span>
                   <span className="font-mono text-xs text-ink/60">02:47</span>
                 </div>
               </div>
