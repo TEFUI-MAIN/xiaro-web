@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 const tones = {
-  green: "border-green/40 text-[#136A3E] bg-green/5",
+  green: "border-green-deep/30 text-[#136A3E] bg-green-deep/5",
   amber: "border-amber/50 text-[#7E5512] bg-amber/10",
   ink: "border-ink/25 text-ink/70 bg-transparent",
   signal: "border-signal/40 text-[#B03A3A] bg-signal/5"

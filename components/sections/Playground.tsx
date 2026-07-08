@@ -91,10 +91,9 @@ export function Playground() {
     <MotionSection id="try-it" className="py-16 lg:py-24">
       <Inset>
         <div className="mx-auto mb-14 max-w-3xl text-center">
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <Eyebrow tone="green">Try it</Eyebrow>
-            <Chip tone="amber">Simulation</Chip>
-          </div>
+          <Eyebrow tone="green" className="mb-4">
+            Try it
+          </Eyebrow>
           <Display level={2}>Watch a message find its owner.</Display>
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-ink/60">
             Pick a message and a time. This is a simulation — the real product does

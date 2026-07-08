@@ -14,7 +14,7 @@ import { TrustRow } from "@/components/sections/TrustRow";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-ink">
+    <main className="min-h-screen overflow-x-clip bg-white text-ink">
       <Announcement />
       <Header />
       <HeroCard />

@@ -41,7 +41,7 @@ export default function PricingPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-ink">
+    <main className="min-h-screen overflow-x-clip bg-white text-ink">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -70,9 +70,9 @@ export default function PricingPage() {
 
           <div className="grid gap-6">
             <SectionCard tone="gray" className="p-7 sm:p-9">
-              <h3 className="text-sm font-bold uppercase tracking-[0.75px] text-ink/50">
+              <h2 className="text-sm font-bold uppercase tracking-[0.75px] text-ink/60">
                 Everything included
-              </h3>
+              </h2>
               <ul className="mt-5 grid gap-3">
                 {included.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/70">
@@ -84,9 +84,7 @@ export default function PricingPage() {
             </SectionCard>
 
             <SectionCard tone="forest" className="p-7 sm:p-9">
-              <h3 className="text-sm font-bold uppercase tracking-[0.75px] text-volt">
-                Why there are no message fees
-              </h3>
+              <h2 className="text-sm font-bold uppercase tracking-[0.75px] text-volt">Why there are no message fees</h2>
               <p className="mt-4 text-[15px] leading-7 text-cream/80">
                 You own your accounts. You pay carriers directly.{" "}
                 <span className="font-semibold text-cream">We never mark up your messages.</span>{" "}
@@ -97,7 +95,7 @@ export default function PricingPage() {
 
             <SectionCard tone="gray" className="flex flex-wrap items-center justify-between gap-4 p-7 sm:p-9">
               <div>
-                <h3 className="text-lg font-semibold">Enterprise</h3>
+                <h2 className="text-lg font-semibold">Enterprise</h2>
                 <p className="mt-1 text-sm text-ink/60">
                   Multiple depots, custom integrations, SLAs.
                 </p>

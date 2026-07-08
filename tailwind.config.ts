@@ -15,13 +15,7 @@ const config: Config = {
         "green-deep": "#17834A",
         hairline: "#E8E8E4",
         amber: "#E8A13A",
-        signal: "#D64545",
-        // TEMPORARY compat aliases while old sections are ported (removed in Task 8)
-        paper: "#FFFFFF",
-        card: "#F5F5F2",
-        muted: "#5B6472",
-        panel: "#11110D",
-        green: { DEFAULT: "#1FA45B", deep: "#17834A" }
+        signal: "#D64545"
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],

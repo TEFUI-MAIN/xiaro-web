@@ -104,13 +104,13 @@ export function StorySpine() {
                         className="absolute -inset-10 -z-10 bg-[radial-gradient(closest-side,rgba(168,242,107,0.35),transparent)] blur-2xl"
                       />
                     ) : null}
-                    <div className="grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:p-16">
-                      <div>
+                    <div className="grid items-center gap-10 p-6 sm:p-12 lg:grid-cols-2 lg:p-16">
+                      <div className="min-w-0">
                         <span className="font-mono text-sm text-ink/40">0{index + 1}</span>
                         <h3 className="mt-3 text-[26px] font-medium leading-[1.25]">{card.title}</h3>
                         <p className="mt-4 max-w-md text-base leading-7 text-ink/60">{card.copy}</p>
                       </div>
-                      <div className="lg:px-6">{card.vignette}</div>
+                      <div className="min-w-0 lg:px-6">{card.vignette}</div>
                     </div>
                   </SectionCard>
                 </MotionCard>

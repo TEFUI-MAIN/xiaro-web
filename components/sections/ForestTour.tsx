@@ -121,7 +121,7 @@ export function ForestTour() {
                     className={`border-l-2 px-5 py-4 text-left text-lg font-medium transition ${
                       active === index
                         ? "border-volt text-cream"
-                        : "border-cream/15 text-cream/50 hover:text-cream/80"
+                        : "border-cream/15 text-cream/70 hover:text-cream"
                     }`}
                   >
                     {tab.label}
@@ -173,7 +173,7 @@ export function ForestTour() {
                       setActive(index);
                     }}
                     className={`flex w-full items-center justify-between py-3 text-left text-base font-medium ${
-                      active === index ? "text-cream" : "text-cream/60"
+                      active === index ? "text-cream" : "text-cream/70"
                     }`}
                   >
                     {tab.label}
