@@ -26,17 +26,24 @@ function ChatVignette() {
 
 function ConnectorNode({
   icon: Icon,
-  tone = "ink"
+  tone = "ink",
+  reduce = false
 }: {
   icon: typeof MessageCircle;
   tone?: "ink" | "volt";
+  reduce?: boolean;
 }) {
   return (
-    <div className="relative z-10 mx-auto grid h-11 w-11 place-items-center rounded-full border-4 border-white shadow-md"
+    <motion.div
+      initial={reduce ? false : { opacity: 0, scale: 0.4 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
+      transition={{ type: "spring", stiffness: 320, damping: 20 }}
+      className="relative z-10 mx-auto grid h-11 w-11 place-items-center rounded-full border-4 border-white shadow-md"
       style={{ backgroundColor: tone === "volt" ? "#84F27A" : "#07111F" }}
     >
       <Icon className={`h-5 w-5 ${tone === "volt" ? "text-night" : "text-cream"}`} />
-    </div>
+    </motion.div>
   );
 }
 
@@ -95,12 +102,15 @@ export function StorySpine() {
             />
           ) : null}
 
-          <div className="grid gap-8">
+          <div className="flex flex-col gap-8 lg:gap-0">
             {cards.map((card, index) => (
-              <div key={card.title}>
+              <div key={card.title} className="contents">
                 {index > 0 ? (
-                  <div className="relative -my-2 hidden py-4 lg:block">
-                    <ConnectorNode icon={index === 1 ? CalendarCheck : TimerReset} />
+                  <div className="hidden items-center justify-center py-9 lg:flex">
+                    <ConnectorNode
+                      icon={index === 1 ? CalendarCheck : TimerReset}
+                      reduce={!!reduce}
+                    />
                   </div>
                 ) : null}
                 <MotionCard>
@@ -125,8 +135,8 @@ export function StorySpine() {
             ))}
           </div>
 
-          <div className="relative mt-6 hidden lg:block">
-            <ConnectorNode icon={Check} tone="volt" />
+          <div className="relative hidden justify-center pt-9 lg:flex">
+            <ConnectorNode icon={Check} tone="volt" reduce={!!reduce} />
           </div>
         </div>
       </Inset>
