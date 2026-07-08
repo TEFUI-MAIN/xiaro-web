@@ -28,11 +28,11 @@ export function EdFooter() {
       <Ed>
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div>
-            <a href="/" className="flex items-center gap-2.5 text-ink">
+            <a href="/" className="flex min-h-[44px] items-center gap-2.5 text-ink">
               <XiaroMark size={30} />
               <span className="text-[17px] font-semibold">Xiaro</span>
             </a>
-            <p className="mt-4 max-w-[30ch] text-[14px] leading-5 text-gray">
+            <p className="mt-4 max-w-[30ch] text-[15px] leading-6 text-gray">
               Roster-routed WhatsApp and SMS for shift-based fleets. Built in
               Australia.
             </p>
@@ -49,7 +49,7 @@ export function EdFooter() {
                 <h3 className="text-[13px] text-gray">{column.title}</h3>
                 <div className="mt-4 grid gap-2.5 text-[14px] text-ink">
                   {column.links.map((link) => (
-                    <a key={link.label} href={link.href} className="transition hover:text-[#0D5BD6]">
+                    <a key={link.label} href={link.href} className="inline-block py-1 transition hover:text-[#0D5BD6] max-sm:py-3">
                       {link.label}
                     </a>
                   ))}
@@ -63,7 +63,7 @@ export function EdFooter() {
           <span className="uppercase tracking-[0.12em]">
             Official WhatsApp Business API · Built in Australia
           </span>
-          <a href="/credits.txt" className="hover:text-ink">
+          <a href="/credits.txt" className="inline-block hover:text-ink max-sm:py-3">
             Photo credits
           </a>
         </div>

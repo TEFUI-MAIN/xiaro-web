@@ -144,7 +144,7 @@ export function Playground() {
                   id="sim-scenario"
                   value={scenarioIdx}
                   onChange={(event) => setScenarioIdx(Number(event.target.value))}
-                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink"
+                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink max-sm:min-h-[44px]"
                 >
                   {SCENARIOS.map((scenario, index) => (
                     <option key={scenario.label} value={index}>
@@ -163,7 +163,7 @@ export function Playground() {
                   value={custom}
                   onChange={(event) => setCustom(event.target.value)}
                   placeholder={SCENARIOS[scenarioIdx].message}
-                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink/40"
+                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink/40 max-sm:min-h-[44px]"
                 />
 
                 <div className="mt-5 flex border border-hairline bg-white p-1 text-xs font-semibold">
@@ -175,7 +175,7 @@ export function Playground() {
                       key={option.label}
                       type="button"
                       onClick={() => setAnswers(option.value)}
-                      className={`flex-1 rounded-md px-3 py-2 transition ${
+                      className={`flex-1 rounded-md px-3 py-2 transition max-sm:min-h-[40px] ${
                         answers === option.value ? "bg-ink text-cream" : "text-ink/60 hover:text-ink"
                       }`}
                     >
@@ -201,7 +201,7 @@ export function Playground() {
                 className="h-[440px] overflow-y-auto border border-hairline bg-cream/50 p-5 sm:h-[460px] sm:p-6"
               >
                 {events.length === 0 ? (
-                  <p className="font-mono text-xs text-ink/60">
+                  <p className="font-mono text-[13px] text-ink/60">
                     ▸ Event log — hit &ldquo;Run the routing&rdquo; to watch the decision happen.
                   </p>
                 ) : (

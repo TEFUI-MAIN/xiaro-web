@@ -26,7 +26,7 @@ export function PillLink({
   disabled?: boolean;
 }) {
   const cls = clsx(
-    "group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium transition",
+    "group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-medium transition max-sm:min-h-[44px] max-sm:px-5",
     variants[variant],
     disabled && "cursor-not-allowed opacity-60",
     className

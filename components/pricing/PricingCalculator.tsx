@@ -74,7 +74,7 @@ export function PricingCalculator() {
             key={option}
             type="button"
             onClick={() => setInterval(option)}
-            className={`flex-1 px-3 py-2 transition ${
+            className={`flex-1 px-3 py-2 transition max-sm:min-h-[44px] ${
               interval === option ? "bg-ink text-cream" : "text-ink/70 hover:text-ink"
             }`}
           >
@@ -94,7 +94,7 @@ export function PricingCalculator() {
             max={300}
             value={Math.min(drivers, 300)}
             onChange={(event) => handleDriversInput(event.target.value)}
-            className="h-2 w-full cursor-pointer accent-[#17834A]"
+            className="h-6 w-full cursor-pointer accent-[#17834A] max-sm:h-11"
             aria-label="Driver count slider"
           />
           <input
@@ -104,7 +104,7 @@ export function PricingCalculator() {
             max={MAX_DRIVERS}
             value={drivers}
             onChange={(event) => handleDriversInput(event.target.value)}
-            className="w-24 border border-hairline bg-white px-3 py-2 text-right font-mono text-sm text-ink"
+            className="w-24 border border-hairline bg-white px-3 py-2 text-right font-mono text-sm text-ink max-sm:min-h-[44px]"
           />
         </div>
       </div>
@@ -138,7 +138,7 @@ export function PricingCalculator() {
           type="checkbox"
           checked={onboarding}
           onChange={(event) => setOnboarding(event.target.checked)}
-          className="mt-1 h-4 w-4 accent-[#17834A]"
+          className="mt-0.5 h-5 w-5 accent-[#17834A]"
         />
         <span className="text-sm leading-6 text-ink/70">
           <span className="font-semibold text-ink">

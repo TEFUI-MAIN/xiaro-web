@@ -38,7 +38,7 @@ export function EdNav({ overlay = false }: { overlay?: boolean }) {
       className={`${overlay ? "absolute inset-x-0 top-0 z-40" : "border-b border-hairline bg-white"} px-5 py-4 sm:px-8`}
     >
       <div className="mx-auto flex max-w-[1270px] items-center justify-between">
-        <a href="/" aria-label="Xiaro home" className={`flex items-center gap-2.5 ${text}`}>
+        <a href="/" aria-label="Xiaro home" className={`flex min-h-[44px] items-center gap-2.5 ${text}`}>
           <XiaroMark size={30} />
           <span className="text-[17px] font-semibold tracking-tight">Xiaro</span>
         </a>
@@ -69,7 +69,7 @@ export function EdNav({ overlay = false }: { overlay?: boolean }) {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className={`rounded-md p-2 lg:hidden ${text}`}
+          className={`grid min-h-[44px] min-w-[44px] place-items-center rounded-md lg:hidden ${text}`}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -86,7 +86,7 @@ export function EdNav({ overlay = false }: { overlay?: boolean }) {
               type="button"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="rounded-md p-2 text-ink"
+              className="grid min-h-[44px] min-w-[44px] place-items-center rounded-md text-ink"
             >
               <X className="h-6 w-6" />
             </button>
