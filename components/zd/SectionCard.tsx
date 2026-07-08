@@ -3,7 +3,8 @@ import clsx from "clsx";
 const tones = {
   night: "bg-night text-cream",
   navy: "bg-navy text-cream",
-  gray: "bg-cream text-ink"
+  gray: "bg-cream text-ink",
+  white: "bg-white text-ink shadow-[0_10px_36px_rgba(7,17,31,0.07)]"
 } as const;
 
 export function SectionCard({

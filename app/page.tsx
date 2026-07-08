@@ -1,15 +1,15 @@
 import { Announcement } from "@/components/sections/Announcement";
-import { AudienceCards } from "@/components/sections/AudienceCards";
+import { FinalCtaBand } from "@/components/sections/FinalCtaBand";
 import { Footer } from "@/components/sections/Footer";
 import { ForestTour } from "@/components/sections/ForestTour";
 import { Header } from "@/components/sections/Header";
 import { HeroCard } from "@/components/sections/Hero";
-import { FinalCtaBand } from "@/components/sections/FinalCtaBand";
+import { OutcomesChapter } from "@/components/sections/OutcomesChapter";
+import { PainChapter } from "@/components/sections/PainChapter";
 import { PricingTeaser } from "@/components/sections/PricingTeaser";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { StorySpine } from "@/components/sections/StorySpine";
 import { Playground } from "@/components/sections/Playground";
-import { Statement } from "@/components/sections/Statement";
 import { TrustRow } from "@/components/sections/TrustRow";
 
 export default function Home() {
@@ -19,11 +19,11 @@ export default function Home() {
       <Header />
       <HeroCard />
       <TrustRow />
-      <Statement />
+      <PainChapter />
       <StorySpine />
       <StatsBand />
       <ForestTour />
-      <AudienceCards />
+      <OutcomesChapter />
       <Playground />
       <PricingTeaser />
       <FinalCtaBand />
