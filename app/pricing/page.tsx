@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Check } from "lucide-react";
 import { PricingCalculator } from "@/components/pricing/PricingCalculator";
-import { Announcement } from "@/components/sections/Announcement";
-import { Footer } from "@/components/sections/Footer";
-import { Header } from "@/components/sections/Header";
-import { TrustRow } from "@/components/sections/TrustRow";
-import { Display } from "@/components/zd/Display";
-import { Eyebrow } from "@/components/zd/Eyebrow";
-import { Inset, SectionCard } from "@/components/zd/SectionCard";
-import { Pill } from "@/components/zd/Pill";
+import { Ed } from "@/components/ed/Ed";
+import { PillLink } from "@/components/ed/PillLink";
+import { TwoTone } from "@/components/ed/TwoTone";
+import { EdFooter } from "@/components/sections/EdFooter";
+import { EdNav } from "@/components/sections/EdNav";
 import { faq } from "@/lib/faq";
 import { BOOKING_URL } from "@/lib/links";
 
@@ -46,95 +43,83 @@ export default function PricingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Announcement />
-      <Header />
+      <EdNav />
 
-      <Inset className="pb-20 pt-16 lg:pt-24">
-        <div className="max-w-3xl">
-          <Eyebrow tone="green">Pricing</Eyebrow>
-          <Display level={1} className="mt-5">
-            One plan. Your own accounts. No&nbsp;markups.
-          </Display>
-          <p className="mt-6 max-w-xl text-lg leading-7 text-ink/60">
-            AU$79/month covers your first 25 drivers with every feature included.
-            AU$3 per driver after that. That&apos;s the whole model.
-          </p>
-        </div>
+      <Ed className="pb-24 pt-16 lg:pt-24">
+        <TwoTone
+          size="xl"
+          as="h1"
+          lead="One plan. Your own accounts."
+          rest="AU$79 a month covers your first 25 drivers with everything included. AU$3 per driver after that. That's the whole model."
+        />
 
-        <div className="mt-14 grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Suspense
-            fallback={<div className="h-[560px] rounded-3xl bg-cream" />}
-          >
+        <div className="mt-16 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <Suspense fallback={<div className="h-[560px] border border-hairline bg-cream/50" />}>
             <PricingCalculator />
           </Suspense>
 
-          <div className="grid gap-6">
-            <SectionCard tone="gray" className="p-7 sm:p-9">
-              <h2 className="text-sm font-bold uppercase tracking-[0.75px] text-ink/60">
+          <div className="grid gap-10">
+            <div>
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gray">
                 Everything included
               </h2>
-              <ul className="mt-5 grid gap-3">
+              <ul className="mt-5 grid gap-3 border-t border-hairline pt-5">
                 {included.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/70">
+                  <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/80">
                     <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </SectionCard>
+            </div>
 
-            <SectionCard tone="navy" className="p-7 sm:p-9">
-              <h2 className="text-sm font-bold uppercase tracking-[0.75px] text-volt">Why there are no message fees</h2>
-              <p className="mt-4 text-[15px] leading-7 text-cream/80">
-                You own your accounts. You pay carriers directly.{" "}
-                <span className="font-semibold text-cream">We never mark up your messages.</span>{" "}
+            <div>
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gray">
+                Why there are no message fees
+              </h2>
+              <p className="mt-5 border-t border-hairline pt-5 text-[15px] leading-7 text-gray">
+                <span className="text-ink">
+                  You own your accounts. You pay carriers directly. We never mark
+                  up your messages.
+                </span>{" "}
                 Your carrier and WhatsApp Business accounts stay yours — Xiaro is
                 the routing layer on top, so you&apos;re never locked in.
               </p>
-            </SectionCard>
+            </div>
 
-            <SectionCard tone="gray" className="flex flex-wrap items-center justify-between gap-4 p-7 sm:p-9">
+            <div className="flex flex-wrap items-center justify-between gap-4 border border-hairline p-6">
               <div>
-                <h2 className="text-lg font-semibold">Enterprise</h2>
-                <p className="mt-1 text-sm text-ink/60">
+                <h2 className="text-[16px] font-medium text-ink">Enterprise</h2>
+                <p className="mt-1 text-[14px] text-gray">
                   Multiple depots, custom integrations, SLAs.
                 </p>
               </div>
-              <Pill href={BOOKING_URL} variant="outline">
-                Talk to us
-              </Pill>
-            </SectionCard>
+              <PillLink href={BOOKING_URL}>Talk to us</PillLink>
+            </div>
           </div>
         </div>
-      </Inset>
+      </Ed>
 
-      <div className="border-y border-hairline">
-        <TrustRow />
+      <div className="border-t border-hairline py-20 lg:py-28">
+        <Ed>
+          <div className="max-w-3xl">
+            <TwoTone lead="Questions fleets actually ask." />
+            <div className="mt-10 divide-y divide-hairline border-y border-hairline">
+              {faq.map((item) => (
+                <details key={item.q} className="group py-5">
+                  <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-[16px] text-ink [&::-webkit-details-marker]:hidden">
+                    {item.q}
+                    <span className="text-gray transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-3 text-[15px] leading-7 text-gray">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </Ed>
       </div>
 
-      <Inset className="py-20 lg:py-28">
-        <div className="mx-auto max-w-3xl">
-          <div className="text-center">
-            <Eyebrow tone="green">FAQ</Eyebrow>
-            <Display level={2} className="mt-4">
-              Questions fleets actually ask.
-            </Display>
-          </div>
-          <div className="mt-12 divide-y divide-hairline border-y border-hairline">
-            {faq.map((item) => (
-              <details key={item.q} className="group py-5">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-left text-[17px] font-medium text-ink [&::-webkit-details-marker]:hidden">
-                  {item.q}
-                  <span className="text-ink/40 transition group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-[15px] leading-7 text-ink/60">{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </Inset>
-
-      <Footer />
+      <EdFooter />
     </main>
   );
 }

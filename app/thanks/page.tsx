@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Display } from "@/components/zd/Display";
-import { Eyebrow } from "@/components/zd/Eyebrow";
-import { Pill } from "@/components/zd/Pill";
+import { PillLink } from "@/components/ed/PillLink";
+import { TwoTone } from "@/components/ed/TwoTone";
 
 export const metadata: Metadata = {
   title: "You're in",
@@ -11,17 +10,19 @@ export const metadata: Metadata = {
 export default function ThanksPage() {
   return (
     <main className="grid min-h-screen place-items-center bg-white px-5 py-24 text-ink">
-      <div className="max-w-xl text-center">
-        <Eyebrow tone="green">Payment received</Eyebrow>
-        <Display level={1} className="mt-5">
-          You&apos;re in.
-        </Display>
-        <p className="mx-auto mt-6 max-w-md text-lg leading-7 text-ink/60">
-          We&apos;ll contact you within 1 business day to schedule your onboarding —
-          connecting your own carrier and WhatsApp Business accounts into Xiaro.
-        </p>
-        <div className="mt-9 flex justify-center">
-          <Pill href="/">Back to xiaro.com.au</Pill>
+      <div className="max-w-xl">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gray">Payment received</p>
+        <TwoTone
+          as="h1"
+          size="xl"
+          className="mt-4"
+          lead="You're in."
+          rest="We'll contact you within 1 business day to connect your own carrier and WhatsApp Business accounts into Xiaro."
+        />
+        <div className="mt-9">
+          <PillLink href="/" variant="solid">
+            Back to xiaro.com.au
+          </PillLink>
         </div>
       </div>
     </main>

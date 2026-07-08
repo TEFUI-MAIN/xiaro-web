@@ -1,33 +1,23 @@
-import { Announcement } from "@/components/sections/Announcement";
-import { FinalCtaBand } from "@/components/sections/FinalCtaBand";
-import { Footer } from "@/components/sections/Footer";
-import { ForestTour } from "@/components/sections/ForestTour";
-import { Header } from "@/components/sections/Header";
-import { HeroCard } from "@/components/sections/Hero";
-import { OutcomesChapter } from "@/components/sections/OutcomesChapter";
-import { PainChapter } from "@/components/sections/PainChapter";
-import { PricingTeaser } from "@/components/sections/PricingTeaser";
-import { StatsBand } from "@/components/sections/StatsBand";
-import { StorySpine } from "@/components/sections/StorySpine";
+import { EdCapabilities } from "@/components/sections/EdCapabilities";
+import { EdFooter } from "@/components/sections/EdFooter";
+import { EdHero } from "@/components/sections/EdHero";
+import { EdNav } from "@/components/sections/EdNav";
+import { EdPricing } from "@/components/sections/EdPricing";
+import { EdProductPeek } from "@/components/sections/EdProductPeek";
+import { EdScenarios } from "@/components/sections/EdScenarios";
 import { Playground } from "@/components/sections/Playground";
-import { TrustRow } from "@/components/sections/TrustRow";
 
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-clip bg-white text-ink">
-      <Announcement />
-      <Header />
-      <HeroCard />
-      <TrustRow />
-      <PainChapter />
-      <StorySpine />
-      <StatsBand />
-      <ForestTour />
-      <OutcomesChapter />
+      <EdNav overlay />
+      <EdHero />
+      <EdCapabilities />
+      <EdProductPeek />
+      <EdScenarios />
       <Playground />
-      <PricingTeaser />
-      <FinalCtaBand />
-      <Footer />
+      <EdPricing />
+      <EdFooter />
     </main>
   );
 }
