@@ -3,7 +3,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
-import { HowItWorks } from "@/components/sections/HowItWorks";
+import { HowItWorksScrolly } from "@/components/sections/HowItWorksScrolly";
 import { Industries } from "@/components/sections/Industries";
 import { PricingSummary } from "@/components/sections/PricingSummary";
 import { Problem } from "@/components/sections/Problem";
@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <CostAndScenarios />
-      <HowItWorks />
+      <HowItWorksScrolly />
       <ProductTour />
       <Industries />
       <PricingSummary />
