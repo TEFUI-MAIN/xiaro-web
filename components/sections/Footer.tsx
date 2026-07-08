@@ -1,53 +1,80 @@
 import { XiaroLogo } from "@/components/XiaroLogo";
+import { Display } from "@/components/zd/Display";
 import { APP_URL, BOOKING_URL, CONTACT_EMAIL } from "@/lib/links";
+
+const columns = [
+  {
+    title: "Product",
+    links: [
+      { label: "Inside the product", href: "/#product" },
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "Try the simulation", href: "/#try-it" }
+    ]
+  },
+  {
+    title: "Pricing",
+    links: [
+      { label: "Plans", href: "/pricing" },
+      { label: "Onboarding", href: "/pricing" },
+      { label: "30-day guarantee", href: "/pricing" }
+    ]
+  },
+  {
+    title: "Company",
+    links: [
+      { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+      { label: "Book a demo", href: BOOKING_URL },
+      { label: "Log in", href: APP_URL }
+    ]
+  }
+];
 
 export function Footer() {
   return (
-    <footer className="border-t border-hairline px-5 py-12 lg:px-12">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[2fr_1fr_1fr]">
-        <div>
-          <XiaroLogo />
-          <p className="mt-4 max-w-sm text-sm leading-6 text-muted">
-            Workforce communications for shift-based operations, built in
-            Australia.
-          </p>
-        </div>
-        <div>
-          <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted">
-            Product
-          </h3>
-          <div className="grid gap-2 text-sm text-muted">
-            <a href="/#how-it-works" className="transition hover:text-ink">
-              How it works
-            </a>
-            <a href="/#product" className="transition hover:text-ink">
-              Product
-            </a>
-            <a href="/pricing" className="transition hover:text-ink">
-              Pricing
-            </a>
-            <a href={APP_URL} className="transition hover:text-ink">
-              Log in
-            </a>
+    <footer className="bg-ink px-4 pb-10 pt-20 text-cream sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <XiaroLogo onDark />
+            <p className="mt-5 max-w-xs text-sm leading-6 text-cream/60">
+              Roster-routed WhatsApp and SMS for shift-based fleets. Built in
+              Australia.
+            </p>
           </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h3 className="mb-5 text-sm font-bold uppercase tracking-[0.75px] text-cream/50">
+                {column.title}
+              </h3>
+              <div className="grid gap-3 text-[15px] text-cream/80">
+                {column.links.map((link) => (
+                  <a key={link.label} href={link.href} className="transition hover:text-cream">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-        <div>
-          <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.16em] text-muted">
-            Contact
-          </h3>
-          <div className="grid gap-2 text-sm text-muted">
-            <a href={`mailto:${CONTACT_EMAIL}`} className="transition hover:text-ink">
-              {CONTACT_EMAIL}
+
+        <div className="mt-16 border-t border-cream/15 pt-12">
+          <Display level={2} as="p">
+            Who&apos;s on shift right now?{" "}
+            <a
+              href={BOOKING_URL}
+              className="text-volt underline decoration-2 underline-offset-8 transition hover:decoration-4"
+            >
+              Find out
             </a>
-            <a href={BOOKING_URL} className="transition hover:text-ink">
-              Book a demo
-            </a>
-          </div>
+          </Display>
         </div>
-      </div>
-      <div className="mx-auto mt-10 flex max-w-7xl flex-wrap justify-between gap-3 border-t border-hairline pt-6 font-mono text-xs text-muted">
-        <span>© 2026 Xiaro Pty Ltd</span>
-        <span>xiaro.com.au</span>
+
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-3 border-t border-cream/15 pt-6 text-[13px] text-cream/50">
+          <span>© 2026 Xiaro Pty Ltd · xiaro.com.au</span>
+          <a href="/credits.txt" className="transition hover:text-cream/80">
+            Photos: Unsplash contributors
+          </a>
+        </div>
       </div>
     </footer>
   );
