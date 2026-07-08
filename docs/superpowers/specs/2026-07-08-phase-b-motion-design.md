@@ -48,7 +48,7 @@ resolveShift(minutesSinceMidnight: number): Supervisor
 
 export type SimEvent = {
   atSec: number;              // seconds since send, drives playback timing
-  clock: string;              // "02:47:00" wall-clock stamp for display
+  clock: string;              // "02:47" wall-clock stamp (24h HH:MM) for display
   kind: "inbound" | "roster" | "delivered" | "reply" | "escalate" | "logged";
   text: string;               // human line for the event log
   tone: "ink" | "green" | "amber" | "signal";
