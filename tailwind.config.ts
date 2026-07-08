@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0E141F",
+        ink: "#1E1D1B",
         cream: "#F5F5F2",
         night: "#07111F",
         navy: "#0B2142",
@@ -16,7 +16,9 @@ const config: Config = {
         sky: "#18D9FF",
         azure: "#1677FF",
         "green-deep": "#17834A",
-        hairline: "#E6E8EC",
+        hairline: "#E5E4E1",
+        gray: "#75736F",
+        graylt: "#92908D",
         amber: "#E8A13A",
         signal: "#D64545"
       },

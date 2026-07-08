@@ -6,9 +6,9 @@ import { useReducedMotion } from "framer-motion";
 import { Play, RotateCcw } from "lucide-react";
 import { MotionSection } from "@/components/Motion";
 import { Chip } from "@/components/ui/Chip";
-import { Chapter, ChapterTitle } from "@/components/zd/Chapter";
-import { Inset, SectionCard } from "@/components/zd/SectionCard";
-import { Pill } from "@/components/zd/Pill";
+import { Ed } from "@/components/ed/Ed";
+import { PillLink } from "@/components/ed/PillLink";
+import { TwoTone } from "@/components/ed/TwoTone";
 import { BOOKING_URL } from "@/lib/links";
 import { buildTimeline, type SimEvent } from "@/lib/sim";
 
@@ -87,22 +87,17 @@ export function Playground() {
   }
 
   return (
-    <Chapter id="try-it" tone="white">
+    <section id="try-it" className="border-t border-hairline py-24 lg:py-36">
       <MotionSection>
-      <Inset>
-        <div className="mb-14 max-w-3xl">
-          <ChapterTitle>
-            Don&apos;t take our word for it.{" "}
-            <span className="text-brand-gradient-deep">Route one yourself.</span>
-          </ChapterTitle>
-          <p className="mt-7 max-w-xl text-lg leading-8 text-ink/60">
-            Pick a message and a time, then watch the decision happen. It&apos;s a
-            simulation — the real product does this with your roster, on your
-            number.
-          </p>
+      <Ed>
+        <div className="mb-12">
+          <TwoTone
+            lead="Don't take my word for it."
+            rest="Pick a message and a time, then watch me work. It's a simulation — the real me does this with your roster, on your number."
+          />
         </div>
 
-        <SectionCard tone="gray" className="overflow-hidden">
+        <div className="overflow-hidden border border-hairline bg-white">
           <div className="grid lg:grid-cols-[0.4fr_0.6fr]">
             <div className="relative min-h-[280px] lg:min-h-full">
               <Image
@@ -137,7 +132,7 @@ export function Playground() {
                   id="sim-scenario"
                   value={scenarioIdx}
                   onChange={(event) => setScenarioIdx(Number(event.target.value))}
-                  className="mt-2 w-full rounded-lg border border-hairline bg-white px-3 py-2.5 text-sm text-ink"
+                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink"
                 >
                   {SCENARIOS.map((scenario, index) => (
                     <option key={scenario.label} value={index}>
@@ -156,10 +151,10 @@ export function Playground() {
                   value={custom}
                   onChange={(event) => setCustom(event.target.value)}
                   placeholder={SCENARIOS[scenarioIdx].message}
-                  className="mt-2 w-full rounded-lg border border-hairline bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink/40"
+                  className="mt-2 w-full border border-hairline bg-white px-3 py-2.5 text-sm text-ink placeholder:text-ink/40"
                 />
 
-                <div className="mt-5 flex rounded-lg border border-hairline bg-white p-1 text-xs font-semibold">
+                <div className="mt-5 flex border border-hairline bg-white p-1 text-xs font-semibold">
                   {[
                     { value: true, label: "Supervisor answers" },
                     { value: false, label: "Supervisor misses it" }
@@ -177,19 +172,21 @@ export function Playground() {
                   ))}
                 </div>
 
-                <Pill
+                <PillLink
                   onClick={run}
                   disabled={playing}
-                  className="mt-6 w-full"
+                  variant="solid"
+                  arrow={false}
+                  className="mt-6 w-full justify-center py-3 text-[14px]"
                 >
                   <Play className="h-4 w-4" />
                   Run the routing
-                </Pill>
+                </PillLink>
               </div>
 
               <div
                 aria-live="polite"
-                className="h-[440px] overflow-y-auto rounded-xl border border-hairline bg-white p-5 sm:h-[460px] sm:p-6"
+                className="h-[440px] overflow-y-auto border border-hairline bg-cream/50 p-5 sm:h-[460px] sm:p-6"
               >
                 {events.length === 0 ? (
                   <p className="font-mono text-xs text-ink/60">
@@ -236,15 +233,13 @@ export function Playground() {
               </div>
             </div>
           </div>
-        </SectionCard>
-
-        <div className="mt-8 flex justify-center">
-          <Pill href={BOOKING_URL} variant="outline">
-            Book a demo
-          </Pill>
         </div>
-      </Inset>
+
+        <div className="mt-8">
+          <PillLink href={BOOKING_URL}>Book a demo</PillLink>
+        </div>
+      </Ed>
       </MotionSection>
-    </Chapter>
+    </section>
   );
 }

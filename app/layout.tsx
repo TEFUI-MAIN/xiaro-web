@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Schibsted_Grotesk } from "next/font/google";
+import { IBM_Plex_Mono, Inter } from "next/font/google";
 import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
-const sans = Schibsted_Grotesk({
+const sans = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   variable: "--font-sans"
 });
 const mono = IBM_Plex_Mono({

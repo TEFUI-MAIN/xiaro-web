@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { Chip } from "@/components/ui/Chip";
-import { Pill } from "@/components/zd/Pill";
+import { PillLink } from "@/components/ed/PillLink";
 import {
   annualPriceAud,
   formatAud,
@@ -67,15 +67,15 @@ export function PricingCalculator() {
   }
 
   return (
-    <div className="rounded-3xl bg-cream p-6 sm:p-8">
-      <div className="flex rounded-lg bg-white p-1 text-xs font-semibold">
+    <div className="border border-hairline p-6 sm:p-8">
+      <div className="flex border border-hairline p-1 text-xs font-semibold">
         {(["monthly", "annual"] as const).map((option) => (
           <button
             key={option}
             type="button"
             onClick={() => setInterval(option)}
-            className={`flex-1 rounded px-3 py-2 transition ${
-              interval === option ? "bg-ink text-cream" : "text-ink/60 hover:text-ink"
+            className={`flex-1 px-3 py-2 transition ${
+              interval === option ? "bg-ink text-cream" : "text-ink/70 hover:text-ink"
             }`}
           >
             {option === "monthly" ? "Monthly" : "Annual — 2 months free"}
@@ -104,7 +104,7 @@ export function PricingCalculator() {
             max={MAX_DRIVERS}
             value={drivers}
             onChange={(event) => handleDriversInput(event.target.value)}
-            className="w-24 rounded-md border border-hairline bg-white px-3 py-2 text-right font-mono text-sm text-ink"
+            className="w-24 border border-hairline bg-white px-3 py-2 text-right font-mono text-sm text-ink"
           />
         </div>
       </div>
@@ -113,34 +113,34 @@ export function PricingCalculator() {
         {interval === "monthly" ? (
           <div className="font-mono text-5xl text-ink">
             {formatAud(monthly)}
-            <span className="text-xl text-ink/60">/mo</span>
+            <span className="text-xl text-ink/70">/mo</span>
           </div>
         ) : (
           <div className="flex items-end gap-3">
             <div className="font-mono text-5xl text-ink">
               {formatAud(annual)}
-              <span className="text-xl text-ink/60">/yr</span>
+              <span className="text-xl text-ink/70">/yr</span>
             </div>
-            <div className="pb-1 font-mono text-sm text-ink/60 line-through">
+            <div className="pb-1 font-mono text-sm text-ink/70 line-through">
               {formatAud(monthly * 12)}
             </div>
           </div>
         )}
-        <p className="mt-3 font-mono text-xs text-ink/60">
+        <p className="mt-3 font-mono text-xs text-ink/70">
           AU$79 base ({INCLUDED_DRIVERS} drivers included)
           {extra > 0 ? ` + ${extra} × AU$${PER_DRIVER_AUD}` : ""}
           {interval === "annual" ? " · billed yearly, 2 months free" : ""}
         </p>
       </div>
 
-      <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-lg border border-hairline bg-white p-4">
+      <label className="mt-6 flex cursor-pointer items-start gap-3 border border-hairline bg-white p-4">
         <input
           type="checkbox"
           checked={onboarding}
           onChange={(event) => setOnboarding(event.target.checked)}
           className="mt-1 h-4 w-4 accent-[#17834A]"
         />
-        <span className="text-sm leading-6 text-ink/60">
+        <span className="text-sm leading-6 text-ink/70">
           <span className="font-semibold text-ink">
             Onboarding — {formatAud(ONBOARDING_AUD)} once-off.
           </span>{" "}
@@ -153,22 +153,27 @@ export function PricingCalculator() {
       <div className="mt-7">
         {unconfigured ? (
           <div className="space-y-3">
-            <Pill href={BOOKING_URL} className="w-full">
+            <PillLink
+              href={BOOKING_URL}
+              variant="solid"
+              className="w-full justify-center py-3 text-[14px]"
+            >
               Book a setup call
-            </Pill>
-            <p className="text-center text-xs text-ink/60">
+            </PillLink>
+            <p className="text-center text-xs text-ink/70">
               Online checkout is almost ready — book a call and we&apos;ll get you started today.
             </p>
           </div>
         ) : (
-          <button
-            type="button"
+          <PillLink
             onClick={startCheckout}
             disabled={pending}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-volt px-6 py-3.5 text-lg font-semibold text-ink transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-70"
+            variant="solid"
+            arrow={false}
+            className="w-full justify-center py-3 text-[14px]"
           >
             {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Get started"}
-          </button>
+          </PillLink>
         )}
         {error ? <p className="mt-3 text-sm text-signal">{error}</p> : null}
         <div className="mt-4 flex justify-center">
