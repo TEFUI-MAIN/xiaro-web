@@ -15,6 +15,14 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -30,7 +38,11 @@ export function Header() {
   }, [open]);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-hairline bg-white/95 px-4 py-3 sm:px-6 lg:px-10">
+    <nav
+      className={`sticky top-0 z-50 border-b border-hairline bg-white/95 px-4 py-3 transition-shadow sm:px-6 lg:px-10 ${
+        scrolled ? "shadow-[0_4px_20px_rgba(7,17,31,0.08)]" : ""
+      }`}
+    >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between">
         <a href="/" aria-label="Xiaro home">
           <XiaroLogo compact />

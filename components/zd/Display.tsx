@@ -15,10 +15,10 @@ export function Display({
   return (
     <Tag
       className={clsx(
-        "font-medium tracking-[-0.01em]",
+        "text-balance font-medium",
         level === 1
-          ? "text-[40px] leading-[1.05] lg:text-[68px]"
-          : "text-[32px] leading-[1.1] lg:text-[44px]",
+          ? "text-[40px] leading-[1.05] tracking-[-0.02em] lg:text-[68px]"
+          : "text-[32px] leading-[1.1] tracking-[-0.01em] lg:text-[44px]",
         className
       )}
     >

@@ -57,7 +57,11 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 border-t border-cream/15 pt-12">
+        <div className="relative mt-16 pt-12">
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,#18D9FF,#1677FF_45%,#84F27A)] opacity-60"
+          />
           <Display level={2} as="p">
             Who&apos;s on shift right now?{" "}
             <a

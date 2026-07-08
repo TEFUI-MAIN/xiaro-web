@@ -14,7 +14,10 @@ const proofs = ["AU$79/mo to 25 drivers", "No message markups", "No apps to inst
 export function HeroCard() {
   return (
     <Inset className="pt-4">
-      <SectionCard tone="night" className="overflow-hidden">
+      <SectionCard
+        tone="night"
+        className="overflow-hidden bg-[linear-gradient(135deg,#07111F_35%,#0A1B33_80%,#0B2142)]"
+      >
         <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:p-16">
           <div className="flex flex-col justify-center">
             <Eyebrow tone="cream">Roster-routed fleet messaging</Eyebrow>

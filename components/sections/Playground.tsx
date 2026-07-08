@@ -206,6 +206,17 @@ export function Playground() {
                         <span className="flex-1 text-sm leading-6 text-ink">{event.text}</span>
                       </div>
                     ))}
+                    {playing ? (
+                      <div className="flex items-center gap-1.5 pl-5" aria-hidden>
+                        {[0, 1, 2].map((dot) => (
+                          <span
+                            key={dot}
+                            className="h-1.5 w-1.5 animate-pulse rounded-full bg-azure/60"
+                            style={{ animationDelay: `${dot * 200}ms` }}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
                     {done ? (
                       <div className="mt-2 flex items-center justify-between gap-3">
                         <Chip tone="green">Logged · audit row written</Chip>
