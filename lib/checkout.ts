@@ -1,4 +1,4 @@
-import { MAX_DRIVERS } from "./pricing";
+const MAX_DRIVERS = 1000; // dormant checkout retains its own bound
 
 export type CheckoutRequest = {
   interval: "monthly" | "annual";

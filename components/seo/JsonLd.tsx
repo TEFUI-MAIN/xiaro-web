@@ -18,9 +18,9 @@ const softwareApplication = {
     "Roster-routed WhatsApp and SMS for transport and field operations. One company number, escalation on silence, tamper-evident audit trail.",
   offers: {
     "@type": "Offer",
-    price: "79",
+    price: "39",
     priceCurrency: "AUD",
-    description: "AU$79/month — 1 depot, 25 drivers, all channels, escalation and audit included."
+    description: "Plans from AU$39/month, priced by fleet size — never by features. Messages at carrier cost with zero markup."
   }
 };
 

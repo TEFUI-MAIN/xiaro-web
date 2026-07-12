@@ -17,7 +17,7 @@ export default function ThanksPage() {
           size="xl"
           className="mt-4"
           lead="You're in."
-          rest="We'll contact you within 1 business day to connect your own carrier and WhatsApp Business accounts into Xiaro."
+          rest="We'll be in touch today — your number goes live the same day, onboarding included."
         />
         <div className="mt-9">
           <PillLink href="/" variant="solid">
