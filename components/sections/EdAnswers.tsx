@@ -8,7 +8,7 @@ const answers = [
   },
   {
     q: "How long is rollout?",
-    a: "Your accounts verify in days. Your drivers are ready the minute you text them the number."
+    a: "Your number is live the same day — onboarding is included. Drivers are ready the minute you text them the contact."
   },
   {
     q: "What about coverage blackspots?",
@@ -24,7 +24,7 @@ const answers = [
   },
   {
     q: "Am I locked in?",
-    a: "Your carrier and WhatsApp accounts stay yours. Leave anytime, take the audit trail with you."
+    a: "Month-to-month, no lock-in. Your number is contractually yours — it ports out with you if you ever leave, audit trail included."
   }
 ];
 

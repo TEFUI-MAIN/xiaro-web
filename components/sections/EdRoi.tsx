@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Ed } from "@/components/ed/Ed";
 import { PillLink } from "@/components/ed/PillLink";
 import { TwoTone } from "@/components/ed/TwoTone";
-import { formatAud, monthlyPriceAud } from "@/lib/pricing";
+import { formatAud, tierFor } from "@/lib/pricing";
 
 /** Industry-typical mis-route, SLA and idle costs — anchors to the published
  *  $130,156/yr estimate for a 100-driver fleet. */
@@ -54,7 +54,7 @@ export function EdRoi() {
   const [drivers, setDrivers] = useState(100);
 
   const loss = drivers * LOSS_PER_DRIVER_YEAR;
-  const cost = monthlyPriceAud(drivers) * 12;
+  const cost = tierFor(drivers).monthly * 12;
   const saving = loss - cost;
 
   return (
@@ -71,7 +71,7 @@ export function EdRoi() {
               id="roi-drivers"
               type="range"
               min={10}
-              max={500}
+              max={100}
               step={10}
               value={drivers}
               onChange={(event) => setDrivers(Number(event.target.value))}
@@ -110,7 +110,7 @@ export function EdRoi() {
           </p>
 
           <div className="mt-9">
-            <PillLink href={`/pricing?drivers=${drivers}`} variant="solid">
+            <PillLink href="/pricing" variant="solid">
               See your exact price
             </PillLink>
           </div>

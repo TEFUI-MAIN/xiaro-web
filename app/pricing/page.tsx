@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Check } from "lucide-react";
-import { PricingCalculator } from "@/components/pricing/PricingCalculator";
 import { Ed } from "@/components/ed/Ed";
 import { PillLink } from "@/components/ed/PillLink";
 import { TwoTone } from "@/components/ed/TwoTone";
@@ -13,17 +11,102 @@ import { BOOKING_URL } from "@/lib/links";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "AU$79/month for your first 25 drivers — every channel, escalation and audit included. AU$3 per extra driver. No message markups, ever.",
+    "Honest pricing for fleet messaging. Plans from AU$39/month, priced by fleet size — never by features. Messages and calls passed through at carrier cost, with zero markup.",
   alternates: { canonical: "/pricing" }
 };
 
+const tierCards = [
+  {
+    name: "Starter",
+    fleet: "up to 10 drivers",
+    price: "$39",
+    cadence: "/month",
+    perDriver: "from $3.90 per driver",
+    highlight: false
+  },
+  {
+    name: "Crew",
+    fleet: "up to 25 drivers",
+    price: "$79",
+    cadence: "/month",
+    perDriver: "from $3.16 per driver",
+    highlight: false
+  },
+  {
+    name: "Fleet",
+    fleet: "up to 100 drivers",
+    price: "$249",
+    cadence: "/month",
+    perDriver: "from $2.49 per driver",
+    highlight: true,
+    tag: "Best for big fleets"
+  },
+  {
+    name: "Group",
+    fleet: "multiple companies, one relationship",
+    price: "Fleet pricing",
+    cadence: " per entity",
+    perDriver: "Separate invoices per company. Group features as they ship.",
+    highlight: false
+  }
+];
+
 const included = [
-  "1 depot",
-  "All channels — WhatsApp primary, SMS fallback",
-  "Escalation ladder — supervisor, escalation contact, duty manager, admin alert",
-  "Tamper-evident audit trail",
-  "Driver-approved GPS check-in (never tracking)",
-  "No apps for drivers or supervisors"
+  "one company number — yours, it ports out with you",
+  "smart routing to whoever is rostered right now",
+  "automatic escalations — nothing goes unanswered",
+  "WhatsApp + SMS with automatic fallback",
+  "full conversation history & tamper-evident audit trail",
+  "driver-approved GPS check-in (never tracking)",
+  "no apps for drivers or supervisors",
+  "usage dashboard — your bill matches your screen"
+];
+
+const commsStats = [
+  { value: "$0", label: "WhatsApp — unlimited, in-conversation*" },
+  { value: "7¢", label: "SMS backup, per message" },
+  { value: "$8.40/mo", label: "your dedicated AU mobile number" }
+];
+
+const addOns = [
+  {
+    name: "Voice Routing",
+    price: "$29/mo + call minutes at carrier cost",
+    copy: "Drivers call your number — by WhatsApp or phone — and reach whoever is rostered, with automatic fallback. Typically $20–50/mo in minutes for a 100-driver fleet."
+  },
+  {
+    name: "Call Recording & Audit Vault",
+    price: "$15/mo, requires Voice Routing",
+    copy: "Every call recorded and playable in the conversation thread. 90-day retention, consent announcements built in."
+  },
+  {
+    name: "Voice + Recording bundle",
+    price: "$39/mo + minutes at cost",
+    copy: "Both add-ons together, locked at foundation pricing."
+  }
+];
+
+const promises = [
+  {
+    title: "Your number is yours",
+    copy: "Leave any time — it ports out with you, in the contract."
+  },
+  {
+    title: "No caps, no overage penalties",
+    copy: "A busy month adds cents, never a fee."
+  },
+  {
+    title: "No surprise bills",
+    copy: "Alerts at 50/80/100% of expected volume."
+  },
+  {
+    title: "Audit us any time",
+    copy: "Every counted message visible on your own dashboard."
+  },
+  {
+    title: "The 30-day guarantee",
+    copy: "If Xiaro isn't routing your messages within 30 days, full refund."
+  }
 ];
 
 export default function PricingPage() {
@@ -45,58 +128,128 @@ export default function PricingPage() {
       />
       <EdNav />
 
-      <Ed className="pb-24 pt-16 lg:pt-24">
+      <Ed className="pt-16 lg:pt-24">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gray">
+          Foundation pricing — early customers keep their rate forever
+        </p>
         <TwoTone
           size="xl"
           as="h1"
-          lead="One plan. Your own accounts."
-          rest="AU$79 a month covers your first 25 drivers with everything included. AU$3 per driver after that. That's the whole model."
+          className="mt-4"
+          lead="Honest pricing for fleet messaging."
+          rest="One number your drivers already know how to use. Every message answered, everything on the record — and the communication costs passed straight through at carrier cost, with zero markup."
         />
 
-        <div className="mt-16 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <Suspense fallback={<div className="h-[560px] border border-hairline bg-cream/50" />}>
-            <PricingCalculator />
-          </Suspense>
-
-          <div className="grid gap-10">
-            <div>
-              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gray">
-                Everything included
-              </h2>
-              <ul className="mt-5 grid gap-3 border-t border-hairline pt-5">
-                {included.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/80">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        {/* Tiers */}
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {tierCards.map((tier) => (
+            <div
+              key={tier.name}
+              className={`relative flex flex-col p-7 ${
+                tier.highlight ? "border-2 border-ink" : "border border-hairline"
+              }`}
+            >
+              {tier.highlight ? (
+                <span className="absolute -top-3 left-6 bg-ink px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.1em] text-white">
+                  {tier.tag}
+                </span>
+              ) : null}
+              <h2 className="text-[16px] font-medium text-ink">{tier.name}</h2>
+              <p className="mt-1 text-[14px] text-gray">{tier.fleet}</p>
+              <div className="mt-6 text-[34px] leading-none text-ink">
+                {tier.price}
+                <span className="text-[15px] text-gray">{tier.cadence}</span>
+              </div>
+              <p className="mt-3 text-[13px] leading-5 text-gray">{tier.perDriver}</p>
+              <div className="mt-auto pt-7">
+                <PillLink
+                  href={BOOKING_URL}
+                  variant={tier.highlight ? "solid" : "outline"}
+                  className="w-full justify-center"
+                >
+                  {tier.name === "Group" ? "Talk to us" : "Get started"}
+                </PillLink>
+              </div>
             </div>
+          ))}
+        </div>
 
-            <div>
-              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gray">
-                Why there are no message fees
-              </h2>
-              <p className="mt-5 border-t border-hairline pt-5 text-[15px] leading-7 text-gray">
-                <span className="text-ink">
-                  You own your accounts. You pay carriers directly. We never mark
-                  up your messages.
-                </span>{" "}
-                Your carrier and WhatsApp Business accounts stay yours — Xiaro is
-                the routing layer on top, so you&apos;re never locked in.
-              </p>
-            </div>
+        {/* Everything included */}
+        <div className="mt-20">
+          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gray">
+            Every plan includes everything — tiers gate fleet size, never features
+          </h2>
+          <ul className="mt-6 grid gap-x-10 gap-y-3 border-t border-hairline pt-6 sm:grid-cols-2">
+            {included.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/80">
+                <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-4 border border-hairline p-6">
-              <div>
-                <h2 className="text-[16px] font-medium text-ink">Enterprise</h2>
-                <p className="mt-1 text-[14px] text-gray">
-                  Multiple depots, custom integrations, SLAs.
+        {/* Communications banner */}
+        <div className="mt-20 border-2 border-ink p-8 sm:p-12">
+          <TwoTone lead="At cost. Zero markup." rest="That's the deal." as="h2" />
+          <p className="mt-5 max-w-2xl text-[16px] leading-7 text-gray">
+            Messages and calls are billed at exactly what the carriers charge us,
+            itemised on your dashboard where you can audit every one.
+          </p>
+          <div className="mt-9 grid gap-8 border-t border-hairline pt-8 sm:grid-cols-3">
+            {commsStats.map((stat) => (
+              <div key={stat.label}>
+                <div className="font-mono text-[30px] text-green-deep">{stat.value}</div>
+                <p className="mt-1.5 text-[14px] leading-5 text-gray">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-[13px] leading-6 text-gray">
+            *Any conversation a driver starts, and every reply within it — including
+            photos and documents when media launches. Reaching a driver silent for
+            24+ hours travels as SMS (7¢) or a WhatsApp notification (~1¢) — always
+            at cost, always counted.
+          </p>
+        </div>
+
+        {/* Add-ons */}
+        <div className="mt-20">
+          <TwoTone lead="Add-ons." rest="Voice, on the same honest terms." as="h2" />
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {addOns.map((addOn) => (
+              <div key={addOn.name} className="flex flex-col border border-hairline p-7">
+                <span className="self-start border border-amber/60 bg-amber/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-[#7E5512]">
+                  Launching soon — priced today
+                </span>
+                <h3 className="mt-5 text-[16px] font-medium text-ink">{addOn.name}</h3>
+                <p className="mt-1 text-[15px] text-ink">{addOn.price}</p>
+                <p className="mt-3 text-[14px] leading-6 text-gray">{addOn.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Promises */}
+        <div className="mt-20 pb-24">
+          <TwoTone lead="Our promises, in writing." as="h2" />
+          <div className="mt-10 grid gap-x-12 gap-y-8 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-3">
+            {promises.map((promise) => (
+              <div key={promise.title}>
+                <h3 className="text-[15px] font-medium text-ink">{promise.title}</h3>
+                <p className="mt-2 max-w-[36ch] text-[15px] leading-6 text-gray">
+                  {promise.copy}
                 </p>
               </div>
-              <PillLink href={BOOKING_URL}>Talk to us</PillLink>
-            </div>
+            ))}
           </div>
+          <p className="mt-14 border-t border-hairline pt-6 text-[13px] leading-6 text-gray">
+            Per-driver rates shown at full tier size. Prices in AUD, excluding GST.
+            Month-to-month — no lock-in contracts. Carrier rates shown are
+            today&apos;s verified rates and are published whenever they change; a
+            one-time $9.90 number setup applies in your first month. Voice add-ons
+            launch after messaging and media; prices shown are locked for
+            foundation customers.
+          </p>
         </div>
       </Ed>
 
