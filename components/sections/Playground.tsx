@@ -31,10 +31,10 @@ const SCENARIOS = [
 ];
 
 const toneDot = {
-  ink: "bg-cream/70",
-  green: "bg-volt",
+  ink: "bg-panel/70",
+  green: "bg-good",
   amber: "bg-amber",
-  signal: "bg-signal"
+  signal: "bg-danger"
 } as const;
 
 const photoStats = [
@@ -99,7 +99,7 @@ export function Playground() {
   }
 
   return (
-    <section id="try-it" className="bg-night py-24 lg:py-36">
+    <section id="try-it" className="bg-asphalt py-24 lg:py-36">
       <MotionSection>
       <Ed>
         <div className="mb-12">
@@ -110,7 +110,7 @@ export function Playground() {
           />
         </div>
 
-        <div className="overflow-hidden border border-white/15 bg-[#0B1626]">
+        <div className="overflow-hidden rounded-xl border border-paperlit/15 bg-[#141E2A]">
           <div className="grid lg:grid-cols-[0.4fr_0.6fr]">
             <div className="relative min-h-[280px] lg:min-h-full">
               <Image
@@ -120,17 +120,17 @@ export function Playground() {
                 sizes="(min-width: 1024px) 35vw, 100vw"
                 className="object-cover object-[75%_center]"
               />
-              <div className="absolute inset-0 bg-night/20" aria-hidden />
+              <div className="absolute inset-0 bg-asphalt/25" aria-hidden />
               <div className="absolute left-5 top-5">
-                <Chip tone="amber" className="bg-white">
+                <Chip tone="amber" className="bg-panel">
                   Simulation
                 </Chip>
               </div>
-              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 bg-night/85 px-5 py-4">
+              <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 gap-2 bg-asphalt/85 px-5 py-4">
                 {photoStats.map(([value, label]) => (
                   <div key={label}>
-                    <div className="font-mono text-lg text-cream">{value}</div>
-                    <div className="text-xs text-cream/60">{label}</div>
+                    <div className="tabular font-display text-lg font-semibold text-paperlit">{value}</div>
+                    <div className="text-xs text-paperlit/60">{label}</div>
                   </div>
                 ))}
               </div>
@@ -138,14 +138,14 @@ export function Playground() {
 
             <div className="grid gap-6 p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div>
-                <label htmlFor="sim-scenario" className="text-sm font-semibold text-cream">
+                <label htmlFor="sim-scenario" className="text-sm font-semibold text-paperlit">
                   Scenario
                 </label>
                 <select
                   id="sim-scenario"
                   value={scenarioIdx}
                   onChange={(event) => setScenarioIdx(Number(event.target.value))}
-                  className="mt-2 w-full border border-white/20 bg-white/[0.06] px-3 py-2.5 text-sm text-cream max-sm:min-h-[44px] [&>option]:text-ink"
+                  className="mt-2 w-full rounded-md border border-paperlit/25 bg-paperlit/10 px-3 py-2.5 text-sm text-paperlit max-sm:min-h-[44px] [&>option]:text-ink"
                 >
                   {SCENARIOS.map((scenario, index) => (
                     <option key={scenario.label} value={index}>
@@ -154,7 +154,7 @@ export function Playground() {
                   ))}
                 </select>
 
-                <label htmlFor="sim-custom" className="mt-5 block text-sm font-semibold text-cream">
+                <label htmlFor="sim-custom" className="mt-5 block text-sm font-semibold text-paperlit">
                   Or type your own message
                 </label>
                 <input
@@ -164,10 +164,10 @@ export function Playground() {
                   value={custom}
                   onChange={(event) => setCustom(event.target.value)}
                   placeholder={SCENARIOS[scenarioIdx].message}
-                  className="mt-2 w-full border border-white/20 bg-white/[0.06] px-3 py-2.5 text-sm text-cream placeholder:text-cream/40 max-sm:min-h-[44px]"
+                  className="mt-2 w-full rounded-md border border-paperlit/25 bg-paperlit/10 px-3 py-2.5 text-sm text-paperlit placeholder:text-paperlit/40 max-sm:min-h-[44px]"
                 />
 
-                <div className="mt-5 flex border border-white/20 p-1 text-xs font-semibold">
+                <div className="mt-5 flex rounded-md border border-paperlit/25 p-1 text-xs font-semibold">
                   {[
                     { value: true, label: "Supervisor answers" },
                     { value: false, label: "Supervisor misses it" }
@@ -176,8 +176,8 @@ export function Playground() {
                       key={option.label}
                       type="button"
                       onClick={() => setAnswers(option.value)}
-                      className={`flex-1 rounded-md px-3 py-2 transition max-sm:min-h-[40px] ${
-                        answers === option.value ? "bg-cream text-night" : "text-cream/75 hover:text-cream"
+                      className={`flex-1 rounded-md px-3 py-2 transition max-sm:min-h-[44px] ${
+                        answers === option.value ? "bg-panel text-asphalt" : "text-paperlit/75 hover:text-paperlit"
                       }`}
                     >
                       {option.label}
@@ -190,7 +190,7 @@ export function Playground() {
                   disabled={playing}
                   variant="white"
                   arrow={false}
-                  className="mt-6 w-full justify-center py-3 text-[14px]"
+                  className="mt-6 w-full justify-center !bg-amber-panel py-3 text-[14px] !text-sign-ink"
                 >
                   <Play className="h-4 w-4" />
                   Run the routing
@@ -199,10 +199,10 @@ export function Playground() {
 
               <div
                 aria-live="polite"
-                className="h-[440px] overflow-y-auto border border-white/15 bg-night p-5 sm:h-[460px] sm:p-6"
+                className="h-[440px] overflow-y-auto rounded-md border border-paperlit/15 bg-asphalt p-5 sm:h-[460px] sm:p-6"
               >
                 {events.length === 0 ? (
-                  <p className="font-mono text-[13px] text-cream/60">
+                  <p className="tabular font-sans text-[13px] font-medium text-paperlit/60">
                     ▸ Event log — hit &ldquo;Run the routing&rdquo; to watch the decision happen.
                   </p>
                 ) : (
@@ -213,8 +213,8 @@ export function Playground() {
                           className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${toneDot[event.tone]}`}
                           aria-hidden
                         />
-                        <span className="font-mono text-xs text-ink/60">{event.clock}</span>
-                        <span className="flex-1 text-sm leading-6 text-cream/90">{event.text}</span>
+                        <span className="tabular text-xs font-medium text-ink/60">{event.clock}</span>
+                        <span className="flex-1 text-sm leading-6 text-paperlit/90">{event.text}</span>
                       </div>
                     ))}
                     {playing ? (
@@ -222,7 +222,7 @@ export function Playground() {
                         {[0, 1, 2].map((dot) => (
                           <span
                             key={dot}
-                            className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky/70"
+                            className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber/70"
                             style={{ animationDelay: `${dot * 200}ms` }}
                           />
                         ))}
@@ -230,13 +230,13 @@ export function Playground() {
                     ) : null}
                     {done ? (
                       <div className="mt-2 flex items-center justify-between gap-3">
-                        <span className="inline-flex items-center rounded-[3px] border border-volt/40 bg-volt/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-volt">
+                        <span className="inline-flex items-center rounded-[3px] border border-amber/60 bg-amber/15 px-2 py-1 tabular text-[11px] font-medium uppercase tracking-[0.14em] text-amber">
                           Logged · audit row written
                         </span>
                         <button
                           type="button"
                           onClick={run}
-                          className="inline-flex items-center gap-1.5 text-sm font-medium text-cream/70 transition hover:text-cream"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-paperlit/70 transition hover:text-paperlit"
                         >
                           <RotateCcw className="h-3.5 w-3.5" />
                           Replay

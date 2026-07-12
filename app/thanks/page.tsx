@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function ThanksPage() {
   return (
-    <main className="grid min-h-screen place-items-center bg-white px-5 py-24 text-ink">
+    <main className="grid min-h-screen place-items-center bg-paper px-5 py-24 text-ink">
       <div className="max-w-xl">
-        <p className="text-[13px] uppercase tracking-[0.12em] text-gray">Payment received</p>
+        <p className="text-[13px] uppercase tracking-[0.12em] text-ink-soft">Payment received</p>
         <TwoTone
           as="h1"
           size="xl"

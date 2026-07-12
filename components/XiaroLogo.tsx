@@ -28,7 +28,7 @@ export function XiaroLogo({
     <div className="flex items-center gap-3">
       <XiaroMark size={compact ? 36 : 44} />
       <span
-        className={`text-2xl font-semibold tracking-tight ${onDark ? "text-cream" : "text-ink"}`}
+        className={`text-2xl font-semibold tracking-tight ${onDark ? "text-paperlit" : "text-ink"}`}
       >
         Xiaro
       </span>

@@ -10,7 +10,7 @@ export function EdProductPeek() {
           lead="This is what I look like to your ops team."
           rest="Drivers and supervisors never see a dashboard — they keep WhatsApp. You get the one screen that knows everything."
         />
-        <div className="mt-12 border border-hairline">
+        <div className="mt-12 border border-line">
           <Image
             src="/product/dashboard.png"
             alt="Xiaro dashboard with shift coverage, live routing activity and chain integrity"
@@ -20,7 +20,7 @@ export function EdProductPeek() {
             className="w-full"
           />
         </div>
-        <p className="mt-4 text-[14px] text-gray">
+        <p className="mt-4 text-[14px] text-ink-soft">
           Live shift coverage, unanswered messages, escalations, and a verified audit chain — one screen.
         </p>
       </Ed>

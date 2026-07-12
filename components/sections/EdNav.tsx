@@ -31,16 +31,16 @@ export function EdNav({ overlay = false }: { overlay?: boolean }) {
   }, [open]);
 
   const text = overlay ? "text-white" : "text-ink";
-  const dim = overlay ? "text-white/80 hover:text-white" : "text-gray hover:text-ink";
+  const dim = overlay ? "text-white/80 hover:text-white" : "text-ink-soft hover:text-ink";
 
   return (
     <nav
-      className={`${overlay ? "absolute inset-x-0 top-0 z-40" : "border-b border-hairline bg-white"} px-5 py-4 sm:px-8`}
+      className={`${overlay ? "absolute inset-x-0 top-0 z-40" : "border-b border-line bg-paper"} px-5 py-4 sm:px-8`}
     >
       <div className="mx-auto flex max-w-[1270px] items-center justify-between">
         <a href="/" aria-label="Xiaro home" className={`flex min-h-[44px] items-center gap-2.5 ${text}`}>
           <XiaroMark size={30} />
-          <span className="text-[17px] font-semibold tracking-tight">Xiaro</span>
+          <span className="font-display text-[17px] font-bold uppercase tracking-[0.14em]">Xiaro</span>
         </a>
         <div className={`hidden items-center gap-7 text-[14px] lg:flex ${dim}`}>
           {links.map((link) => (
@@ -76,11 +76,11 @@ export function EdNav({ overlay = false }: { overlay?: boolean }) {
       </div>
 
       {open ? (
-        <div className="fixed inset-0 z-50 flex flex-col bg-white px-6 py-8">
+        <div className="fixed inset-0 z-50 flex flex-col bg-paper px-6 py-8">
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center gap-2.5 text-ink" onClick={() => setOpen(false)}>
               <XiaroMark size={30} />
-              <span className="text-[17px] font-semibold">Xiaro</span>
+              <span className="font-display text-[17px] font-bold uppercase tracking-[0.14em]">Xiaro</span>
             </a>
             <button
               type="button"
@@ -102,7 +102,7 @@ export function EdNav({ overlay = false }: { overlay?: boolean }) {
                 {link.label}
               </a>
             ))}
-            <a href={APP_URL} className="text-3xl text-gray">
+            <a href={APP_URL} className="text-3xl text-ink-soft">
               Log in
             </a>
           </div>

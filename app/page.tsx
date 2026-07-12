@@ -12,7 +12,7 @@ import { Playground } from "@/components/sections/Playground";
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-clip bg-white text-ink">
+    <main className="min-h-screen overflow-x-clip bg-paper text-ink">
       <EdNav overlay />
       <EdHero />
       <EdCapabilities />

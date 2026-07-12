@@ -32,10 +32,10 @@ function Bar({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-4">
-        <span className="text-[14px] text-gray">{label}</span>
-        <span className="font-mono text-[15px] text-ink">{money(value)}/yr</span>
+        <span className="text-[14px] text-ink-soft">{label}</span>
+        <span className="tabular text-[15px] font-medium text-ink">{money(value)}/yr</span>
       </div>
-      <div className="mt-2 border-l border-hairline">
+      <div className="mt-2 border-l border-line">
         <motion.div
           className={`h-[10px] rounded-r-[4px] ${className}`}
           initial={reduce ? false : { width: 0 }}
@@ -58,13 +58,13 @@ export function EdRoi() {
   const saving = loss - cost;
 
   return (
-    <section id="arithmetic" className="border-t border-hairline py-24 lg:py-36">
+    <section id="arithmetic" className="border-t border-line py-24 lg:py-36">
       <Ed>
         <TwoTone lead="The arithmetic." rest="Slide to your fleet size. The bars do the talking." />
 
         <div className="mt-12 max-w-2xl">
           <div className="flex items-center gap-5">
-            <label htmlFor="roi-drivers" className="shrink-0 text-[14px] text-gray">
+            <label htmlFor="roi-drivers" className="shrink-0 text-[14px] text-ink-soft">
               Fleet size
             </label>
             <input
@@ -75,9 +75,9 @@ export function EdRoi() {
               step={10}
               value={drivers}
               onChange={(event) => setDrivers(Number(event.target.value))}
-              className="h-6 w-full cursor-pointer accent-[#17834A] max-sm:h-11"
+              className="h-6 w-full cursor-pointer accent-[#237A58] max-sm:h-11"
             />
-            <span className="w-24 shrink-0 text-right font-mono text-[15px] text-ink">
+            <span className="w-24 shrink-0 text-right tabular text-[15px] font-medium text-ink">
               {drivers} drivers
             </span>
           </div>
@@ -87,23 +87,23 @@ export function EdRoi() {
               label="What silence costs you (estimated)"
               value={loss}
               max={loss}
-              className="bg-signal"
+              className="bg-ink"
               reduce={reduce}
             />
             <Bar
               label="What Xiaro costs"
               value={cost}
               max={loss}
-              className="bg-green-deep"
+              className="bg-amber"
               reduce={reduce}
             />
           </div>
 
-          <p className="mt-10 border-t border-hairline pt-6 text-[22px] text-ink lg:text-[26px]">
-            Net, you keep <span className="font-mono text-green-deep">≈ {money(saving)}</span> a
+          <p className="mt-10 border-t border-line pt-6 text-[22px] text-ink lg:text-[26px]">
+            Net, you keep <span className="tabular font-display font-semibold text-good">≈ {money(saving)}</span> a
             year.
           </p>
-          <p className="mt-3 max-w-[52ch] text-[13px] leading-5 text-gray">
+          <p className="mt-3 max-w-[52ch] text-[13px] leading-5 text-ink-soft">
             Estimates from industry-typical mis-route, SLA-breach and idle-time
             costs (~{formatAud(LOSS_PER_DRIVER_YEAR)}/driver/yr). Your numbers will
             differ — that&apos;s what the 30-day guarantee is for.
