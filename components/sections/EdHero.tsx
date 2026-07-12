@@ -14,21 +14,17 @@ export function EdHero() {
         sizes="100vw"
         className="object-cover object-[62%_center]"
       />
-      <div aria-hidden className="absolute inset-0 bg-night/45" />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(0deg,rgba(7,17,31,0.55),transparent_40%)]"
-      />
+      <div aria-hidden className="absolute inset-0 bg-asphalt/65" />
 
-      <div className="relative flex min-h-[86vh] flex-col items-center justify-center px-5 pb-24 pt-28 text-center">
-        <h1 className="max-w-3xl text-balance text-[42px] font-normal leading-[1.04] text-white lg:text-[66px]">
+      <div className="relative mx-auto flex min-h-[86vh] max-w-[1060px] flex-col justify-center px-5 pb-24 pt-28 sm:px-8">
+        <h1 className="max-w-[14ch] text-balance font-display text-[36px] font-bold leading-[1.05] tracking-[-0.01em] text-paperlit lg:text-[56px]">
           I&apos;m the number your whole fleet messages.
         </h1>
-        <p className="mt-5 max-w-xl text-balance text-[16px] leading-6 text-white/85">
+        <p className="mt-5 max-w-xl text-[16px] leading-6 text-paperlit/85">
           Every driver texts me on WhatsApp or SMS. I always know who&apos;s on
           shift, I escalate when nobody answers, and I never forget who said what.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <PillLink href="/pricing" variant="white">
             Get started
           </PillLink>
@@ -39,7 +35,7 @@ export function EdHero() {
         <div className="mt-12">
           <EdTicker />
         </div>
-        <p className="absolute bottom-8 left-1/2 w-full -translate-x-1/2 px-5 text-[11px] uppercase tracking-[0.14em] text-white/60">
+        <p className="absolute bottom-8 left-0 w-full px-5 text-[11px] uppercase tracking-[0.14em] text-paperlit/60 sm:px-8">
           Official WhatsApp Business API · Carrier-grade SMS · Audit-grade logging · Built in Australia
         </p>
       </div>

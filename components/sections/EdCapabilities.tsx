@@ -118,10 +118,10 @@ export function EdCapabilities() {
             <div key={block.label}>
               <Ed className="py-16 lg:py-24">
                 <MotionCard>
-                  <div className="grid h-10 w-10 place-items-center bg-ink">
-                    <Icon className="h-5 w-5 text-white" />
+                  <div className="grid h-10 w-10 place-items-center rounded-md bg-ink">
+                    <Icon className="h-5 w-5 text-paper" />
                   </div>
-                  <p className="mt-5 text-[14px] text-gray">{block.label}</p>
+                  <p className="mt-5 text-[12px] font-semibold uppercase tracking-[0.12em] text-amber-ink">{block.label}</p>
                   <TwoTone className="mt-3" lead={block.lead} rest={block.rest} />
                   {"widget" in block && block.widget === "ladder" ? <EdLadderLoop /> : null}
                   <Trio items={block.trios} />

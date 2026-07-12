@@ -1,10 +1,10 @@
 import clsx from "clsx";
 
 const tones = {
-  green: "border-green-deep/30 text-[#136A3E] bg-green-deep/5",
-  amber: "border-amber/50 text-[#7E5512] bg-amber/10",
+  green: "border-good/40 text-good bg-good/10",
+  amber: "border-amber/50 text-amber-ink bg-amber/10",
   ink: "border-ink/25 text-ink/70 bg-transparent",
-  signal: "border-signal/40 text-[#B03A3A] bg-signal/5"
+  signal: "border-danger/50 text-[#B03A3A] bg-danger/5"
 } as const;
 
 export type ChipTone = keyof typeof tones;
@@ -21,7 +21,7 @@ export function Chip({
   return (
     <span
       className={clsx(
-        "inline-flex items-center gap-1.5 rounded-[3px] border px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em]",
+        "inline-flex items-center gap-1.5 rounded-[3px] border px-2 py-1 tabular text-[11px] font-medium uppercase tracking-[0.14em]",
         tones[tone],
         className
       )}

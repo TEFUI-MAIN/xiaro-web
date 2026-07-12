@@ -30,14 +30,14 @@ const answers = [
 
 export function EdAnswers() {
   return (
-    <section className="border-t border-hairline py-24 lg:py-36">
+    <section className="border-t border-line py-24 lg:py-36">
       <Ed>
         <TwoTone lead="Straight answers." rest="The questions every ops manager asks first." />
-        <div className="mt-12 grid gap-x-12 gap-y-9 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-12 gap-y-9 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-3">
           {answers.map((item) => (
             <div key={item.q}>
               <h3 className="text-[15px] font-medium text-ink">{item.q}</h3>
-              <p className="mt-2 max-w-[36ch] text-[15px] leading-6 text-gray">{item.a}</p>
+              <p className="mt-2 max-w-[36ch] text-[15px] leading-6 text-ink-soft">{item.a}</p>
             </div>
           ))}
         </div>

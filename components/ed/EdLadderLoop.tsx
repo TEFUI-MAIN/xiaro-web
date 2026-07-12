@@ -24,7 +24,7 @@ export function EdLadderLoop() {
   const resolvedBeat = step >= 4;
 
   return (
-    <div className="mt-10 border-y border-hairline py-5" aria-hidden>
+    <div className="mt-10 border-y border-line py-5" aria-hidden>
       <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
         {rungs.map((rung, index) => {
           const lit = resolvedBeat ? index <= 1 : index <= step;
@@ -33,19 +33,19 @@ export function EdLadderLoop() {
             <div key={rung.who} className="flex items-center gap-2.5">
               <span
                 className={`h-2 w-2 rounded-full transition-colors duration-300 ${
-                  lit ? (index === 0 ? "bg-green-deep" : "bg-amber") : "bg-hairline"
+                  lit ? (index === 0 ? "bg-good" : "bg-amber") : "bg-line"
                 } ${active ? "animate-pulse" : ""}`}
               />
-              <span className={`font-mono text-[12px] ${lit ? "text-ink" : "text-gray"}`}>
+              <span className={`tabular text-[12px] font-medium ${lit ? "text-ink" : "text-ink-soft"}`}>
                 {rung.time}
               </span>
-              <span className={`text-[13px] ${lit ? "text-ink" : "text-gray"}`}>{rung.who}</span>
+              <span className={`text-[13px] ${lit ? "text-ink" : "text-ink-soft"}`}>{rung.who}</span>
             </div>
           );
         })}
         <span
-          className={`ml-auto font-mono text-[12px] transition-opacity duration-300 ${
-            resolvedBeat ? "text-green-deep opacity-100" : "opacity-0"
+          className={`ml-auto tabular text-[12px] font-medium transition-opacity duration-300 ${
+            resolvedBeat ? "text-good opacity-100" : "opacity-0"
           }`}
         >
           reply logged ✓ — audit row written

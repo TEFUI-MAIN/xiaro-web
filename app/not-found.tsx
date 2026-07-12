@@ -3,9 +3,9 @@ import { TwoTone } from "@/components/ed/TwoTone";
 
 export default function NotFound() {
   return (
-    <main className="grid min-h-screen place-items-center bg-white px-5 py-24 text-ink">
+    <main className="grid min-h-screen place-items-center bg-paper px-5 py-24 text-ink">
       <div className="max-w-xl">
-        <p className="font-mono text-[13px] text-gray">404 · no route found</p>
+        <p className="tabular font-sans text-[13px] font-medium text-ink-soft">404 · no route found</p>
         <TwoTone
           as="h1"
           size="xl"

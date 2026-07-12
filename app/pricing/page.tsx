@@ -121,7 +121,7 @@ export default function PricingPage() {
   };
 
   return (
-    <main className="min-h-screen overflow-x-clip bg-white text-ink">
+    <main className="min-h-screen overflow-x-clip bg-paper text-ink">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -129,7 +129,7 @@ export default function PricingPage() {
       <EdNav />
 
       <Ed className="pt-16 lg:pt-24">
-        <p className="text-[13px] uppercase tracking-[0.12em] text-gray">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-amber-ink">
           Foundation pricing — early customers keep their rate forever
         </p>
         <TwoTone
@@ -145,22 +145,22 @@ export default function PricingPage() {
           {tierCards.map((tier) => (
             <div
               key={tier.name}
-              className={`relative flex flex-col p-7 ${
-                tier.highlight ? "border-2 border-ink" : "border border-hairline"
+              className={`relative flex flex-col rounded-xl bg-panel p-7 shadow-card ${
+                tier.highlight ? "border-2 border-[rgb(var(--hl))]" : "border border-line"
               }`}
             >
               {tier.highlight ? (
-                <span className="absolute -top-3 left-6 bg-ink px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.1em] text-white">
+                <span className="absolute -top-3 left-6 rounded-[3px] bg-amber-panel px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-sign-ink">
                   {tier.tag}
                 </span>
               ) : null}
               <h2 className="text-[16px] font-medium text-ink">{tier.name}</h2>
-              <p className="mt-1 text-[14px] text-gray">{tier.fleet}</p>
-              <div className="mt-6 text-[34px] leading-none text-ink">
+              <p className="mt-1 text-[14px] text-ink-soft">{tier.fleet}</p>
+              <div className="tabular mt-6 font-display text-[34px] font-bold leading-none text-ink">
                 {tier.price}
-                <span className="text-[15px] text-gray">{tier.cadence}</span>
+                <span className="text-[15px] text-ink-soft">{tier.cadence}</span>
               </div>
-              <p className="mt-3 text-[13px] leading-5 text-gray">{tier.perDriver}</p>
+              <p className="mt-3 text-[13px] leading-5 text-ink-soft">{tier.perDriver}</p>
               <div className="mt-auto pt-7">
                 <PillLink
                   href={BOOKING_URL}
@@ -176,13 +176,13 @@ export default function PricingPage() {
 
         {/* Everything included */}
         <div className="mt-20">
-          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gray">
+          <h2 className="text-[12px] font-semibold uppercase tracking-[0.12em] text-amber-ink">
             Every plan includes everything — tiers gate fleet size, never features
           </h2>
-          <ul className="mt-6 grid gap-x-10 gap-y-3 border-t border-hairline pt-6 sm:grid-cols-2">
+          <ul className="mt-6 grid gap-x-10 gap-y-3 border-t border-line pt-6 sm:grid-cols-2">
             {included.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-[15px] leading-6 text-ink/80">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-green-deep" />
+                <Check className="mt-1 h-4 w-4 shrink-0 text-good" />
                 {item}
               </li>
             ))}
@@ -190,21 +190,21 @@ export default function PricingPage() {
         </div>
 
         {/* Communications banner */}
-        <div className="mt-20 border-2 border-ink p-8 sm:p-12">
-          <TwoTone lead="At cost. Zero markup." rest="That's the deal." as="h2" />
-          <p className="mt-5 max-w-2xl text-[16px] leading-7 text-gray">
+        <div className="mt-20 rounded-2xl border-[3px] border-sign-ink bg-amber-panel p-8 text-sign-ink sm:p-12">
+          <h2 className="max-w-4xl text-balance font-display text-[26px] font-bold leading-[1.1] tracking-[-0.01em] text-sign-ink lg:text-[34px]">At cost. Zero markup. <span className="opacity-70">That&apos;s the deal.</span></h2>
+          <p className="mt-5 max-w-2xl text-[16px] leading-7 text-sign-ink/85">
             Messages and calls are billed at exactly what the carriers charge us,
             itemised on your dashboard where you can audit every one.
           </p>
-          <div className="mt-9 grid gap-8 border-t border-hairline pt-8 sm:grid-cols-3">
+          <div className="mt-9 grid gap-8 border-t border-sign-ink/25 pt-8 sm:grid-cols-3">
             {commsStats.map((stat) => (
               <div key={stat.label}>
-                <div className="font-mono text-[30px] text-green-deep">{stat.value}</div>
-                <p className="mt-1.5 text-[14px] leading-5 text-gray">{stat.label}</p>
+                <div className="tabular font-display text-[30px] font-bold text-sign-ink">{stat.value}</div>
+                <p className="mt-1.5 text-[14px] leading-5 text-sign-ink/80">{stat.label}</p>
               </div>
             ))}
           </div>
-          <p className="mt-8 text-[13px] leading-6 text-gray">
+          <p className="mt-8 text-[13px] leading-6 text-sign-ink/80">
             *Any conversation a driver starts, and every reply within it — including
             photos and documents when media launches. Reaching a driver silent for
             24+ hours travels as SMS (7¢) or a WhatsApp notification (~1¢) — always
@@ -217,13 +217,13 @@ export default function PricingPage() {
           <TwoTone lead="Add-ons." rest="Voice, on the same honest terms." as="h2" />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {addOns.map((addOn) => (
-              <div key={addOn.name} className="flex flex-col border border-hairline p-7">
-                <span className="self-start border border-amber/60 bg-amber/10 px-2 py-1 font-mono text-[11px] uppercase tracking-[0.1em] text-[#7E5512]">
+              <div key={addOn.name} className="flex flex-col rounded-xl border border-line bg-panel p-7 shadow-card">
+                <span className="self-start border border-amber bg-amber/15 px-2 py-1 tabular text-[11px] font-medium uppercase tracking-[0.1em] text-amber-ink">
                   Launching soon — priced today
                 </span>
                 <h3 className="mt-5 text-[16px] font-medium text-ink">{addOn.name}</h3>
                 <p className="mt-1 text-[15px] text-ink">{addOn.price}</p>
-                <p className="mt-3 text-[14px] leading-6 text-gray">{addOn.copy}</p>
+                <p className="mt-3 text-[14px] leading-6 text-ink-soft">{addOn.copy}</p>
               </div>
             ))}
           </div>
@@ -232,17 +232,17 @@ export default function PricingPage() {
         {/* Promises */}
         <div className="mt-20 pb-24">
           <TwoTone lead="Our promises, in writing." as="h2" />
-          <div className="mt-10 grid gap-x-12 gap-y-8 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-x-12 gap-y-8 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-3">
             {promises.map((promise) => (
-              <div key={promise.title}>
+              <div key={promise.title} className="border-l-[3px] border-amber pl-5">
                 <h3 className="text-[15px] font-medium text-ink">{promise.title}</h3>
-                <p className="mt-2 max-w-[36ch] text-[15px] leading-6 text-gray">
+                <p className="mt-2 max-w-[36ch] text-[15px] leading-6 text-ink-soft">
                   {promise.copy}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-14 border-t border-hairline pt-6 text-[13px] leading-6 text-gray">
+          <p className="mt-14 border-t border-line pt-6 text-[13px] leading-6 text-ink-soft">
             Per-driver rates shown at full tier size. Prices in AUD, excluding GST.
             Month-to-month — no lock-in contracts. Carrier rates shown are
             today&apos;s verified rates and are published whenever they change; a
@@ -253,18 +253,18 @@ export default function PricingPage() {
         </div>
       </Ed>
 
-      <div className="border-t border-hairline py-20 lg:py-28">
+      <div className="border-t border-line py-20 lg:py-28">
         <Ed>
           <div className="max-w-3xl">
             <TwoTone lead="Questions fleets actually ask." />
-            <div className="mt-10 divide-y divide-hairline border-y border-hairline">
+            <div className="mt-10 divide-y divide-line border-y border-line">
               {faq.map((item) => (
                 <details key={item.q} className="group">
                   <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-4 py-5 text-left text-[16px] text-ink [&::-webkit-details-marker]:hidden">
                     {item.q}
-                    <span className="text-gray transition group-open:rotate-45">+</span>
+                    <span className="text-ink-soft transition group-open:rotate-45">+</span>
                   </summary>
-                  <p className="pb-5 text-[15px] leading-7 text-gray">{item.a}</p>
+                  <p className="pb-5 text-[15px] leading-7 text-ink-soft">{item.a}</p>
                 </details>
               ))}
             </div>

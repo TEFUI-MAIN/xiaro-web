@@ -33,7 +33,7 @@ export function EdTicker() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none flex h-9 w-full max-w-xl items-center justify-center overflow-hidden bg-night/60 px-4"
+      className="pointer-events-none flex h-9 w-full max-w-xl items-center justify-center overflow-hidden bg-asphalt/60 px-4"
     >
       <AnimatePresence mode="wait">
         <motion.p
@@ -42,7 +42,7 @@ export function EdTicker() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3 }}
-          className="truncate font-mono text-[12px] text-white/85"
+          className="truncate tabular text-[12px] font-medium text-white/85"
         >
           {lines[idx]}
         </motion.p>

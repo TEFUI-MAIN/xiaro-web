@@ -55,14 +55,14 @@ export function EdScenarios() {
                     alt={scenario.alt}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                    className="object-cover"
                   />
                 </div>
-                <p className="mt-5 text-[13px] text-gray">{scenario.category}</p>
+                <p className="mt-5 text-[13px] text-ink-soft">{scenario.category}</p>
                 <h3 className="mt-1.5 max-w-[30ch] text-[19px] leading-6 text-ink">
                   {scenario.title}
                 </h3>
-                <p className="mt-2.5 text-[14px] text-[#0D5BD6]">
+                <p className="mt-2.5 text-[14px] font-medium text-amber-ink underline underline-offset-4">
                   Run this scenario <span aria-hidden>→</span>
                 </p>
               </a>

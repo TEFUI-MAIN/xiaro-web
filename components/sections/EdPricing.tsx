@@ -12,20 +12,24 @@ const lines = [
 
 export function EdPricing() {
   return (
-    <section className="border-t border-hairline py-24 lg:py-36">
+    <section className="border-t border-line py-24 lg:py-36">
       <Ed>
-        <TwoTone
-          size="xl"
-          lead="At cost. Zero markup."
-          rest="That's the deal — plans from AU$39 a month, and your comms billed at exactly what the carriers charge."
-        />
-        <div className="mt-12 grid gap-x-10 gap-y-8 border-t border-hairline pt-10 sm:grid-cols-2 lg:grid-cols-4">
-          {lines.map(([value, label]) => (
-            <div key={value}>
-              <div className="text-[22px] text-ink">{value}</div>
-              <p className="mt-1.5 max-w-[28ch] text-[14px] leading-5 text-gray">{label}</p>
-            </div>
-          ))}
+        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-amber-ink">Pricing</p>
+        <div className="mt-6 rounded-2xl border-[3px] border-sign-ink bg-amber-panel p-8 text-sign-ink sm:p-12">
+          <h2 className="max-w-4xl text-balance font-display text-[30px] font-bold leading-[1.08] tracking-[-0.01em] lg:text-[44px]">
+            At cost. Zero markup.{" "}
+            <span className="opacity-70">
+              That&apos;s the deal — plans from AU$39 a month, and your comms billed at exactly what the carriers charge.
+            </span>
+          </h2>
+          <div className="mt-10 grid gap-x-10 gap-y-8 border-t border-sign-ink/25 pt-8 sm:grid-cols-2 lg:grid-cols-4">
+            {lines.map(([value, label]) => (
+              <div key={value}>
+                <div className="tabular font-display text-[24px] font-bold">{value}</div>
+                <p className="mt-1.5 max-w-[28ch] text-[14px] leading-5 text-sign-ink/80">{label}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div className="mt-12 flex flex-wrap gap-3">
           <PillLink href="/pricing" variant="solid">
